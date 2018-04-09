@@ -6,7 +6,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="https://dreamflyingcat.github.io/"/>
-  <updated>2018-04-09T03:11:42.826Z</updated>
+  <updated>2018-04-09T03:58:16.553Z</updated>
   <id>https://dreamflyingcat.github.io/</id>
   
   <author>
@@ -17,11 +17,11 @@
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
-    <title>mongoose v5.0.12 中文API</title>
+    <title>中文转拼音或首字母模块</title>
     <link href="https://dreamflyingcat.github.io/2018/04/09/heheda/"/>
     <id>https://dreamflyingcat.github.io/2018/04/09/heheda/</id>
     <published>2018-04-09T02:49:34.957Z</published>
-    <updated>2018-04-09T03:11:42.826Z</updated>
+    <updated>2018-04-09T03:58:16.553Z</updated>
     
     <content type="html"><![CDATA[<h2 id="测试"><a href="#测试" class="headerlink" title="测试"></a>测试</h2>]]></content>
     
