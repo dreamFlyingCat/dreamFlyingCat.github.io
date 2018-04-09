@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>dreamFlyingCat</title>
+  <title>dreamFlyingCat&#39;s Blog</title>
   <icon>https://www.gravatar.com/avatar/23d136dc82cfca661ae65f0f6a7d1289</icon>
   <subtitle>书山有路勤为径，学海无涯苦作舟</subtitle>
   <link href="/atom.xml" rel="self"/>
@@ -10,7 +10,7 @@
   <id>https://dreamflyingcat.github.io/</id>
   
   <author>
-    <name>MissLiu</name>
+    <name>刘亚利</name>
     <email>1293925288@qq.com</email>
   </author>
   
