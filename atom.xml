@@ -1,25 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>刘亚利</title>
-  <icon>https://www.gravatar.com/avatar/c240f1720ed8361caf329d7e173987fe</icon>
-  <subtitle>your subtitle</subtitle>
+  <title>dreamFlyingCat</title>
+  <icon>https://www.gravatar.com/avatar/23d136dc82cfca661ae65f0f6a7d1289</icon>
+  <subtitle>书山有路勤为径，学海无涯苦作舟</subtitle>
   <link href="/atom.xml" rel="self"/>
   
-  <link href="http://yoursite.com/"/>
+  <link href="https://dreamflyingcat.github.io/"/>
   <updated>2018-04-08T02:44:02.026Z</updated>
-  <id>http://yoursite.com/</id>
+  <id>https://dreamflyingcat.github.io/</id>
   
   <author>
-    <name>your name</name>
-    <email>your email</email>
+    <name>MissLiu</name>
+    <email>1293925288@qq.com</email>
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
   
   <entry>
     <title>Hello World</title>
-    <link href="http://yoursite.com/2018/04/08/hello-world/"/>
-    <id>http://yoursite.com/2018/04/08/hello-world/</id>
+    <link href="https://dreamflyingcat.github.io/2018/04/08/hello-world/"/>
+    <id>https://dreamflyingcat.github.io/2018/04/08/hello-world/</id>
     <published>2018-04-08T02:44:02.025Z</published>
     <updated>2018-04-08T02:44:02.026Z</updated>
     
