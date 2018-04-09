@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mongoose v5.0.12 中文API - Connections | dreamFlyingCat | 书山有路勤为径，学海无涯苦作舟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Connections你可以使用mongoose.connect()方法连接mongoDB数据库。 mongoose.connect(&amp;apos;mongodb://localhost/myapp&amp;apos;); 这是连接运行在本地的Mongodb服务上（默认使用27017端口）的myapp数据库所需要的最少的">
+<meta name="keywords" content="前端、全栈、node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose v5.0.12 中文API - Connections">
+<meta property="og:url" content="https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/index.html">
+<meta property="og:site_name" content="dreamFlyingCat">
+<meta property="og:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Connections你可以使用mongoose.connect()方法连接mongoDB数据库。 mongoose.connect(&amp;apos;mongodb://localhost/myapp&amp;apos;); 这是连接运行在本地的Mongodb服务上（默认使用27017端口）的myapp数据库所需要的最少的">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T04:12:57.049Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongoose v5.0.12 中文API - Connections">
+<meta name="twitter:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Connections你可以使用mongoose.connect()方法连接mongoDB数据库。 mongoose.connect(&amp;apos;mongodb://localhost/myapp&amp;apos;); 这是连接运行在本地的Mongodb服务上（默认使用27017端口）的myapp数据库所需要的最少的">
+    
+        <link rel="alternate" type="application/atom+xml" title="dreamFlyingCat" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MissLiu</h5>
+          <a href="mailto:1293925288@qq.com" title="1293925288@qq.com" class="mail">1293925288@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/dreamFlyingCat" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mongoose v5.0.12 中文API - Connections</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="关键字查找">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mongoose v5.0.12 中文API - Connections</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-09T04:12:24.649Z" itemprop="datePublished" class="page-time">
+  2018-04-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#Connections"><span class="post-toc-number">1.</span> <span class="post-toc-text">Connections</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#缓冲操作"><span class="post-toc-number">2.</span> <span class="post-toc-text">缓冲操作</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#选项-Options"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">选项(Options)</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#例子"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#回调函数"><span class="post-toc-number">3.</span> <span class="post-toc-text">回调函数</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#连接字符串选项"><span class="post-toc-number">4.</span> <span class="post-toc-text">连接字符串选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#副本集连接"><span class="post-toc-number">5.</span> <span class="post-toc-text">副本集连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#支持多个multi-mongos"><span class="post-toc-number">6.</span> <span class="post-toc-text">支持多个multi-mongos</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#多连接"><span class="post-toc-number">7.</span> <span class="post-toc-text">多连接</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#连接池"><span class="post-toc-number">8.</span> <span class="post-toc-text">连接池</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#5-x版本改变的选项"><span class="post-toc-number">9.</span> <span class="post-toc-text">5.x版本改变的选项</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下一章-——-Models"><span class="post-toc-number"></span> <span class="post-toc-text">下一章 —— Models</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-mongoose-Connections"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mongoose v5.0.12 中文API - Connections</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-09 12:12:24" datetime="2018-04-09T04:12:24.649Z"  itemprop="datePublished">2018-04-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>官方原版：<a href="http://mongoosejs.com" target="_blank" rel="noopener">http://mongoosejs.com</a><br>引用请注明出处和转载请注明出处</p>
+</blockquote>
+<h3 id="Connections"><a href="#Connections" class="headerlink" title="Connections"></a>Connections</h3><p>你可以使用<code>mongoose.connect()</code>方法连接mongoDB数据库。</p>
+<pre><code>mongoose.connect(&apos;mongodb://localhost/myapp&apos;);
+</code></pre><p>这是连接运行在本地的Mongodb服务上（默认使用27017端口）的myapp数据库所需要的最少的参数，如果连接失败尝试修改localhost为127.0.0.1再试试，可能是因为改变了localhost的值导致了连接失败。</p>
+<p>你可以在uri中指定更多的参数：</p>
+<pre><code>mongoose.connect(&apos;mongodb://username:password@host:port/database?options...&apos;);
+</code></pre><p><a href="http://docs.mongodb.org/manual/reference/connection-string/" target="_blank" rel="noopener">点击查看</a>更多入参详情。</p>
+<h3 id="缓冲操作"><a href="#缓冲操作" class="headerlink" title="缓冲操作"></a>缓冲操作</h3><p>你可以在mongoose连接到mongoDB之前就使用model操作数据库：</p>
+<pre><code>nongoose.connect(&apos;mongodb://localhost/myapp&apos;);
+var MyModel = mongoose.model(&apos;Test&apos;, new Schema({ name: String }));
+// Works
+MyModel.findOne(function(error, result) { /* ... */ });
+</code></pre><p>因为mongoose内部调用了缓冲模型函数，这种缓冲很方便，但也是常见的混乱来源。如果你在连接mongoDB之前调用models，mongoose默认不会抛出任何的错误。</p>
+<pre><code>var MyModel = mongoose.model(&apos;Test&apos;, new Schema({ name: String }));
+// Will just hang until mongoose successfully connects
+MyModel.findOne(function(error, result) { /* ... */ });
+
+setTimeout(function() {
+     mongoose.connect(&apos;mongodb://localhost/myapp&apos;);
+}, 60000);
+</code></pre><p>可以在你的<a href="http://mongoosejs.com/docs/guide.html#bufferCommands" target="_blank" rel="noopener">schema</a>中传入<code>bufferCommands</code>选项禁用缓冲。如果你开启了缓冲而且你的连接挂掉了，可以尝试关闭缓冲然后查看你是否正确的建立了连接。也可以全局关闭缓冲：</p>
+<pre><code>mongoose.set(&apos;bufferCommands&apos;, false);
+</code></pre><h4 id="选项-Options"><a href="#选项-Options" class="headerlink" title="选项(Options)"></a>选项(Options)</h4><p>Mongoose的<code>connect</code>方法第二个参数为<code>options</code>对象，该对象会被传递给底层驱动程序，选项中的设置优先于连接字符串中传递的选项。</p>
+<pre><code>mongoose.connect(uri, options);
+</code></pre><p><code>connect()</code>的参数——options的完整的选项列表可以点击<a href="http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html#connect" target="_blank" rel="noopener">mongoDB node驱动文档</a>查看。除了下面的例外情况，mongoose会将options中的选项原封不动的传递给驱动。</p>
+<ul>
+<li>bufferCommands – 是否开启mongoose的buffering, 该属性并不会传递给MongoDB底层驱动。</li>
+<li>user/pass – 用于验证的用户名和密码。这两个选项为mongoose专用的，对应mongoDB驱动的auth.user和auth.password属性。</li>
+<li>autoIndex – mongoose默认在建立连接时为schema中定义index的字段自动创建索引，该特性虽然有利于开发，但是对性能有很大的影响，不利于大型项目生产部署。设置autoIndex为false，mongoose会禁用自动创建索引功能。</li>
+<li>dbName – 在连接字符串中指明连接和重写的数据库名称。如果你使用<code>mongodb+srv</code>语法连接<a href="https://www.mongodb.com/cloud/atlas" target="_blank" rel="noopener"> MongoDB Atlas</a>，需要使用<code>dbname</code>选项指明连接的数据库，因为在连接字符串中无法指明。</li>
+</ul>
+<p>下面的选项对于mongoose的调试（tuning mongoose不知道如何翻译，望高人指点）非常重要：</p>
+<ul>
+<li><code>autoReconnect</code> - 连接断开时候底层的MongoDB驱动会自动尝试重新连接，除非你是想要管理自己的连接池的非常高级的用户，否则请勿将此选项设置为<code>false</code>。</li>
+<li><code>reconnectTries</code> - 如果到单个服务器或mongos代理（而不是副本集）的连接断开，MongoDB驱动程序将每隔reconnectInterval时间尝试重连，直到reconnectTries后放弃尝试，然后mongoose连接将触发reconnectFailed事件。 此选项对副本集连接不起任何作用。</li>
+<li><code>reconnectInterval</code> - 详情查看reconnectTries。</li>
+<li><code>promiseLibrary</code> - 设置底层驱动的<a href="http://mongodb.github.io/node-mongodb-native/2.1/api/MongoClient.html" target="_blank" rel="noopener">promise library</a><br>poolSize - MongoDB驱动程序为此连接保持打开的最大套接字数量。poolSize默认为5.请记住，从MongoDB 3.4开始，MongoDB一次只允许每个套接字执行一个操作，因此如果你增加操作，可能会导致一些慢的操作阻塞速度更快的查询。</li>
+<li><code>bufferMaxEntries</code> - 当驱动程序断开连接时，MongoDB驱动程序有自己的缓冲机制。如果你希望数据库操作在未连接时立即失败，请将此选项设置为0，并设置schema的<code>bufferCommands</code>为<code>false</code>，而不是等待重新连接。</li>
+</ul>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre><code>const options = {
+    useMongoClient: true,
+    autoIndex: false, // Don&apos;t build indexes
+    reconnectTries: Number.MAX_VALUE, // Never stop trying to reconnect
+    reconnectInterval: 500, // Reconnect every 500ms
+    poolSize: 10, // Maintain up to 10 socket connections
+    // If not connected, return errors immediately rather than waiting for reconnect
+    bufferMaxEntries: 0
+};
+mongoose.connect(uri, options);
+</code></pre><h3 id="回调函数"><a href="#回调函数" class="headerlink" title="回调函数"></a>回调函数</h3><p><code>connect()</code>函数接受一个回调函数作为参数，返回一个<a href="http://mongoosejs.com/docs/promises.html" target="_blank" rel="noopener">promise</a>。</p>
+<pre><code>mongoose.connect(uri, options, function(error) {
+// Check error in initial connection. There is no 2nd param to the callback.
+});
+
+// Or using promises
+mongoose.connect(uri, options).then(
+    () =&gt; { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ },
+    err =&gt; { /** handle initial connection error */ }
+);
+</code></pre><h3 id="连接字符串选项"><a href="#连接字符串选项" class="headerlink" title="连接字符串选项"></a>连接字符串选项</h3><p>您还可以在连接字符串中指明驱动选项用于URI查询的参数。这仅适用于传递给MongoDB驱动程序的选项。您不能在查询字符串中设置特定于Mongoose的选项，如bufferCommands。</p>
+<pre><code>mongoose.connect(&apos;mongodb://localhost:27017/test?connectTimeoutMS=1000&amp;bufferCommands=false&apos;);
+// The above is equivalent to:
+mongoose.connect(&apos;mongodb://localhost:27017/test&apos;, {
+connectTimeoutMS: 1000
+// Note that mongoose will **not** pull `bufferCommands` from the query string
+});
+</code></pre><p>将选项放入查询字符串的缺点是查询字符串选项难以阅读。 优点是你只需要一个配置选项，即URI，而不需要独立的配置socketTimeoutMS，connectTimeoutMS等多个选项。最佳实践是在连接字符串中放置开发和生产之间可能不同的选项，如replicaSet或ssl， 应该保持不变的选项，如connectTimeoutMS或poolSize放在options的对象中。</p>
+<p>MongoDB文档有支持的连接字符串选项的<a href="https://docs.mongodb.com/manual/reference/connection-string/" target="_blank" rel="noopener">完整列表</a>。</p>
+<p>###keepAlive注意事项</p>
+<p>对于长期运行的应用程序需要谨慎设置<code>keepAlive</code>的值（毫秒为单位）。如果不设置该参数，你可能隔三差五的看到<code>connection closed</code>的错误提示而且不知道原因。如果是这样，阅读完<a href="http://tldp.org/HOWTO/TCP-Keepalive-HOWTO/overview.html" target="_blank" rel="noopener">此文</a>后，您可能会决定启用keepAlive：</p>
+<pre><code>mongoose.connect(uri, { keepAlive: 120 });
+</code></pre><h3 id="副本集连接"><a href="#副本集连接" class="headerlink" title="副本集连接"></a>副本集连接</h3><p>要连接到副本集，请传入以逗号分隔的主机列表而不是单个主机。</p>
+<pre><code>mongoose.connect(&apos;mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]&apos; [, options]);
+</code></pre><h3 id="支持多个multi-mongos"><a href="#支持多个multi-mongos" class="headerlink" title="支持多个multi-mongos"></a>支持多个multi-mongos</h3><p>在集群中您还可以连接到多个mongos实例以实现高性能。对于mongoose 5.x，连接多个mongos您不需要任何特殊的选项。</p>
+<pre><code>// Connect to 2 mongos servers
+mongoose.connect(&apos;mongodb://mongosA:27501,mongosB:27501&apos;, cb);
+</code></pre><h3 id="多连接"><a href="#多连接" class="headerlink" title="多连接"></a>多连接</h3><p>目前为止我们学习了使用mongoose默认连接连接到mongoDB。有时我们需要打开多个到mongo的连接，每个连接的读写设置不同，也可能连接到不同的数据库。这种情况下，可以使用<code>mongoose.createConnection()</code>方法，它接受上面提到的所有选项，并给你返回一个新的连接。</p>
+<pre><code>const conn = mongoose.createConnection(&apos;mongodb://[username:password@]host1[:port1][,host2[:port2],...[,hostN[:portN]]][/[database][?options]]&apos;, options);
+</code></pre><p>这个连接之后用于新建和检索模型。模型始终限定到其中的一个连接。</p>
+<p>当您调用<code>mongoose.connect()</code>时，Mongoose会创建一个默认连接。您可以使用mongoose.connection访问默认连接。</p>
+<h3 id="连接池"><a href="#连接池" class="headerlink" title="连接池"></a>连接池</h3><p>每个连接无论是使用<code>mongoose.connect</code>还是<code>mongoose.createConnection</code>创建的，都需要内部可配置的连接池支持，默认最大为5。可以使用连接选项调整池大小：</p>
+<pre><code>// With object options
+mongoose.createConnection(uri, { poolSize: 4 });
+
+const uri = &apos;mongodb://localhost/test?poolSize=4&apos;;
+mongoose.createConnection(uri);
+</code></pre><h3 id="5-x版本改变的选项"><a href="#5-x版本改变的选项" class="headerlink" title="5.x版本改变的选项"></a>5.x版本改变的选项</h3><p>如果从4.x升级到5.x并且没有在4.x中使用<code>useMongoClient</code>选项，则可能会看到以下弃用警告：</p>
+<pre><code>the server/replset/mongos options are deprecated, all their options are supported at the top level of the options object
+</code></pre><p> 在较早版本的MongoDB驱动程序中，您必须为服务器连接、副本集连接和mongos连接指定不同的选项： </p>
+<pre><code>mongoose.connect(myUri, {
+server: {
+    socketOptions: {
+    socketTimeoutMS: 0,
+    keepAlive: true
+    },
+    reconnectTries: 30
+},
+replset: {
+    socketOptions: {
+    socketTimeoutMS: 0,
+    keepAlive: true
+    },
+    reconnectTries: 30
+},
+mongos: {
+    socketOptions: {
+    socketTimeoutMS: 0,
+    keepAlive: true
+    },
+    reconnectTries: 30
+}
+});
+</code></pre><p>在mongoose v5.x中，您可以在顶层声明这些选项，而无需额外的嵌套。 以下是<a href="http://mongodb.github.io/node-mongodb-native/2.2/api/MongoClient.html" target="_blank" rel="noopener">所有支持选项的列表</a>。</p>
+<pre><code>// Equivalent to the above code
+mongoose.connect(myUri, {
+    socketTimeoutMS: 0,
+    keepAlive: true,
+    reconnectTries: 30
+});
+</code></pre><h2 id="下一章-——-Models"><a href="#下一章-——-Models" class="headerlink" title="下一章 —— Models"></a>下一章 —— <a href="https://github.com/dreamFlyingCat/mongoose-API/blob/master/docs/Schemas/Models.md" target="_blank" rel="noopener">Models</a></h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    post.last_updated<time datetime="2018-04-09T04:12:57.049Z" itemprop="dateUpdated">2018-04-09 12:12:57</time>
+</span><br>
+
+
+        
+        欢迎留言~~~
+        
+    </div>
+    
+    <footer>
+        <a href="https://dreamflyingcat.github.io">
+            <img src="/img/avatar.jpg" alt="MissLiu">
+            MissLiu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&title=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&title=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/09/mongoose-Documents/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mongoose v5.0.12 中文API - Documents</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/09/mongoose-Schema/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mongoose v5.0.12 中文API - 纲要</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            var hyper_id = 'true';
+            _hcwp = window._hcwp || [];
+            _hcwp.push({
+                widget: "Stream",
+                widget_id: hyper_id
+            });
+            (function () {
+                if ("HC_LOAD_INIT" in window) return;
+                HC_LOAD_INIT = true;
+                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(
+                    0, 2).toLowerCase();
+                var hcc = document.createElement("script");
+                hcc.type = "text/javascript";
+                hcc.async = true;
+                hcc.src = ("https:" == document.location.protocol ? "https" : "http") +
+                    "://w.hypercomments.com/widget/hc/" + hyper_id + "/" + lang + "/widget.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+
+        </script>
+        <a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+    </section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>MissLiu &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&title=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&title=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - Connections》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Connections/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACpklEQVR42u3aUW6DQAwFwNz/0u0BUuizvUZRO3xFFYEdKuHNs1+v+Ph6OyZ/v//8foWrc44deHh4eOOl3y/3/mZXV3g/J7/75Ft4eHh4e7xkEflL/P7v+b0m5+Dh4eF9Di95NZ8i4eHh4f0N3v1S8lghf2R4eHh4n8mrXjr/Sx7j9u54LGvBw8PD6+91X70i8eTnlf4eHh4e3rirnrzce2WjemZztXh4eHgLvGqEWo0kepHu/Dp4eHh4e7xefNBrXCXjXGdLDh4eHt4eb77o+6WcvXJU67YXgYeH9+951dA2H8Y61ehKHl/htwIeHh7egJfEsqcGqo5lJ9VmGB4eHt4arzdKlTCqwwG9eOKX6oeHh4d3iJfD8sg1B1e36eUWGh4eHt4yLwkj5gVj0iorx754eHh4C7zeINSplv+kJdYLU/Dw8PDmvGr7f7IFzyOJPCAuDF3h4eHhHeVNbpaXkDyKnReG16lniYeHhxf/+E/KQBIf5EuvXi3a3OPh4eGt8XoRQ76g6ot+MnT1w+gAHh4e3gKv+uKuDgpUl9hrsxWGrvDw8PDG+9vkNV0IT8cxbi96uPwWHh4e3lFeL0TIY4Je5FEd2Ir+b3h4eHhHeb2WVT5clYcOvTDi8o54eHh4C7xqBNAbO0iK0PxMPDw8vCd51RGB6rb7bEusfODh4eGt8Xqkw1veuMwUHg0eHh7eg7xek6wa6VabauVQAw8PD+8ob9KU6jXPqmUpf3w/fBcPDw9vgfdMYDEfU+h9xsPDw9vjJcVgfuN5eaiOguHh4eFt86r5Z28rXF305NHg4eHhfQ4vj2KrseykwXasMODh4eGt8eav7wmgUE7w8PDw1nhJGFFt8OfDBMmAQnNTjoeHh7fAm//gr5aNfEH5eNbowMPDw0t53wtHDQEcunNGAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '天道酬勤';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

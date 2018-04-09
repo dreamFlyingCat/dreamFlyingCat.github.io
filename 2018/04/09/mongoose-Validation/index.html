@@ -1,0 +1,908 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mongoose v5.0.12 中文API - Validation | dreamFlyingCat | 书山有路勤为径，学海无涯苦作舟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Validation在我们使用确定的validation语法前，请先记住下面的规则：  Validation是在SchemaType中定义的额； Validation是中间件的内部组件，schema默认使用pre(&amp;#39;save&amp;#39;)钩子函数注册validation； 你可以使用doc.validat">
+<meta name="keywords" content="前端、全栈、node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose v5.0.12 中文API - Validation">
+<meta property="og:url" content="https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/index.html">
+<meta property="og:site_name" content="dreamFlyingCat">
+<meta property="og:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Validation在我们使用确定的validation语法前，请先记住下面的规则：  Validation是在SchemaType中定义的额； Validation是中间件的内部组件，schema默认使用pre(&amp;#39;save&amp;#39;)钩子函数注册validation； 你可以使用doc.validat">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T04:18:03.192Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongoose v5.0.12 中文API - Validation">
+<meta name="twitter:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  Validation在我们使用确定的validation语法前，请先记住下面的规则：  Validation是在SchemaType中定义的额； Validation是中间件的内部组件，schema默认使用pre(&amp;#39;save&amp;#39;)钩子函数注册validation； 你可以使用doc.validat">
+    
+        <link rel="alternate" type="application/atom+xml" title="dreamFlyingCat" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MissLiu</h5>
+          <a href="mailto:1293925288@qq.com" title="1293925288@qq.com" class="mail">1293925288@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/dreamFlyingCat" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mongoose v5.0.12 中文API - Validation</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="关键字查找">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mongoose v5.0.12 中文API - Validation</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-09T04:17:33.740Z" itemprop="datePublished" class="page-time">
+  2018-04-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#Validation"><span class="post-toc-number">1.</span> <span class="post-toc-text">Validation</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#内置验证器"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">内置验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#unique选项不是一个验证器"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">unique选项不是一个验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义验证器"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">自定义验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#自定义异步验证器"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">自定义异步验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#错误验证"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">错误验证</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#对嵌套对象使用Required验证器"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">对嵌套对象使用Required验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新验证器"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">更新验证器</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#更新验证器和this"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">更新验证器和this</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#context选项"><span class="post-toc-number">1.9.</span> <span class="post-toc-text">context选项</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#指定需要更新验证器的路径"><span class="post-toc-number">1.10.</span> <span class="post-toc-text">指定需要更新验证器的路径</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#push和-addToSet的更新验证"><span class="post-toc-number">1.11.</span> <span class="post-toc-text">$push和$addToSet的更新验证</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下一章-——-Middleware"><span class="post-toc-number">2.</span> <span class="post-toc-text">下一章 —— Middleware</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-mongoose-Validation"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mongoose v5.0.12 中文API - Validation</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-09 12:17:33" datetime="2018-04-09T04:17:33.740Z"  itemprop="datePublished">2018-04-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>官方原版：<a href="http://mongoosejs.com" target="_blank" rel="noopener">http://mongoosejs.com</a><br>引用请注明出处和转载请注明出处</p>
+</blockquote>
+<h2 id="Validation"><a href="#Validation" class="headerlink" title="Validation"></a>Validation</h2><p>在我们使用确定的validation语法前，请先记住下面的规则：</p>
+<ul>
+<li>Validation是在SchemaType中定义的额；</li>
+<li>Validation是中间件的内部组件，schema默认使用<code>pre(&#39;save&#39;)</code>钩子函数注册validation；</li>
+<li>你可以使用<code>doc.validate(callback)</code>或者<code>doc.validateSync()</code>进行手动的validation。</li>
+<li>除了<code>required</code>验证器，validate不会在undefined值上运行；</li>
+<li>validate是异步递归执行的，如果顶层document调用<a href="http://mongoosejs.com/docs/api.html#model_Model-save" target="_blank" rel="noopener">Model#save</a>，sub-document的验证也会执行。一旦发生错误，<a href="http://mongoosejs.com/docs/api.html#model_Model-save" target="_blank" rel="noopener">Model#save</a>的回调函数会收它。</li>
+<li>validation支持自定义。</li>
+</ul>
+<hr>
+<pre><code>var schema = new Schema({
+name: {
+    type: String,
+    required: true
+}
+});
+var Cat = db.model(&apos;Cat&apos;, schema);
+
+// This cat has no name :(
+var cat = new Cat();
+cat.save(function(error) {
+assert.equal(error.errors[&apos;name&apos;].message,
+    &apos;Path `name` is required.&apos;);
+
+error = cat.validateSync();
+assert.equal(error.errors[&apos;name&apos;].message,
+    &apos;Path `name` is required.&apos;);
+});
+</code></pre><h3 id="内置验证器"><a href="#内置验证器" class="headerlink" title="内置验证器"></a>内置验证器</h3><p>Mongoose提供了一些内置的验证器。</p>
+<ul>
+<li>所有的<a href="http://mongoosejs.com/docs/schematypes.html" target="_blank" rel="noopener">SchemaType</a>都有<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-required" target="_blank" rel="noopener">required</a>验证器，其使用<code>checkRequired()</code>函数判断值是否符合要求。</li>
+<li>Numbers有专属的<a href="http://mongoosejs.com/docs/api.html#schema_number_SchemaNumber-min" target="_blank" rel="noopener">min</a>和<a href="http://mongoosejs.com/docs/api.html#schema_number_SchemaNumber-max" target="_blank" rel="noopener">max</a>验证器；</li>
+<li>String有专属<a href="http://mongoosejs.com/docs/api.html#schema_string_SchemaString-enum" target="_blank" rel="noopener">enum</a>、<a href="http://mongoosejs.com/docs/api.html#schema_string_SchemaString-match" target="_blank" rel="noopener">match</a>、<a href="http://mongoosejs.com/docs/api.html#schema_string_SchemaString-maxlength" target="_blank" rel="noopener">maxlength</a>、<a href="http://mongoosejs.com/docs/api.html#schema_string_SchemaString-minlength" target="_blank" rel="noopener">minlength</a>验证器。 </li>
+</ul>
+<p>上面的每一个验证器链接提供关于如何使用它们和定制错误信息。</p>
+<pre><code>   var breakfastSchema = new Schema({
+    eggs: {
+        type: Number,
+        min: [6, &apos;Too few eggs&apos;],
+        max: 12
+    },
+    bacon: {
+        type: Number,
+        required: [true, &apos;Why no bacon?&apos;]
+    },
+    drink: {
+        type: String,
+        enum: [&apos;Coffee&apos;, &apos;Tea&apos;],
+        required: function() {
+            return this.bacon &gt; 3;
+        }
+    }
+});
+var Breakfast = db.model(&apos;Breakfast&apos;, breakfastSchema);
+
+var badBreakfast = new Breakfast({
+    eggs: 2,
+    bacon: 0,
+    drink: &apos;Milk&apos;
+});
+var error = badBreakfast.validateSync();
+assert.equal(error.errors[&apos;eggs&apos;].message,
+  &apos;Too few eggs&apos;);
+assert.ok(!error.errors[&apos;bacon&apos;]);
+assert.equal(error.errors[&apos;drink&apos;].message,
+  &apos;`Milk` is not a valid enum value for path `drink`.&apos;);
+
+badBreakfast.bacon = 5;
+badBreakfast.drink = null;
+
+error = badBreakfast.validateSync();
+assert.equal(error.errors[&apos;drink&apos;].message, &apos;Path `drink` is required.&apos;);
+
+badBreakfast.bacon = null;
+error = badBreakfast.validateSync();
+assert.equal(error.errors[&apos;bacon&apos;].message, &apos;Why no bacon?&apos;);
+</code></pre><h3 id="unique选项不是一个验证器"><a href="#unique选项不是一个验证器" class="headerlink" title="unique选项不是一个验证器"></a><code>unique</code>选项不是一个验证器</h3><p><code>unique</code>选项不是一个验证器，它用于快速建立MongoDB的unique indexes。更多信息查看<a href="http://mongoosejs.com/docs/faq.html" target="_blank" rel="noopener">FAQ</a>。</p>
+<pre><code>  var uniqueUsernameSchema = new Schema({
+    username: {
+        type: String,
+        unique: true
+    }
+});
+var U1 = db.model(&apos;U1&apos;, uniqueUsernameSchema);
+var U2 = db.model(&apos;U2&apos;, uniqueUsernameSchema);
+
+var dup = [{ username: &apos;Val&apos; }, { username: &apos;Val&apos; }];
+U1.create(dup, function(error) {
+  // Race condition! This may save successfully, depending on whether
+  // MongoDB built the index before writing the 2 docs.
+});
+
+// Need to wait for the index to finish building before saving,
+// otherwise unique constraints may be violated.
+U2.once(&apos;index&apos;, function(error) {
+  assert.ifError(error);
+  U2.create(dup, function(error) {
+    // Will error, but will *not* be a mongoose validation error, it will be
+    // a duplicate key error.
+    assert.ok(error);
+    assert.ok(!error.errors);
+    assert.ok(error.message.indexOf(&apos;duplicate key error&apos;) !== -1);
+  });
+});
+
+// There&apos;s also a promise-based equivalent to the event emitter API.
+// The `init()` function is idempotent and returns a promise that
+// will resolve once indexes are done building;
+U2.init().then(function() {
+  U2.create(dup, function(error) {
+    // Will error, but will *not* be a mongoose validation error, it will be
+    // a duplicate key error.
+    assert.ok(error);
+    assert.ok(!error.errors);
+    assert.ok(error.message.indexOf(&apos;duplicate key error&apos;) !== -1);
+  });
+});
+</code></pre><h3 id="自定义验证器"><a href="#自定义验证器" class="headerlink" title="自定义验证器"></a>自定义验证器</h3><p>如果内置的验证器满足不了你的需求，你可以使用自定义验证器。</p>
+<p>通过传递一个validation函数实现自定义，具体细节查看<code>SchemaType#validate()</code>章节<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate" target="_blank" rel="noopener">API</a>文档</p>
+<pre><code> var userSchema = new Schema({
+  phone: {
+    type: String,
+    validate: {
+      validator: function(v) {
+        return /\d{3}-\d{3}-\d{4}/.test(v);
+      },
+      message: &apos;{VALUE} is not a valid phone number!&apos;
+    },
+    required: [true, &apos;User phone number required&apos;]
+  }
+});
+
+var User = db.model(&apos;user&apos;, userSchema);
+var user = new User();
+var error;
+
+user.phone = &apos;555.0123&apos;;
+error = user.validateSync();
+assert.equal(error.errors[&apos;phone&apos;].message,
+  &apos;555.0123 is not a valid phone number!&apos;);
+
+user.phone = &apos;&apos;;
+error = user.validateSync();
+assert.equal(error.errors[&apos;phone&apos;].message,
+  &apos;User phone number required&apos;);
+
+user.phone = &apos;201-555-0123&apos;;
+// Validation succeeds! Phone number is defined
+// and fits `DDD-DDD-DDDD`
+error = user.validateSync();
+assert.equal(error, null);
+</code></pre><h3 id="自定义异步验证器"><a href="#自定义异步验证器" class="headerlink" title="自定义异步验证器"></a>自定义异步验证器</h3><p>我们也可以自定义异步验证器。如果验证器函数返回一个promise实例（像一个async函数）,mongoose会等待promise状态确定。如果你更喜欢callbacks形式，设置<code>isAsync</code>选项并且给验证器函数传入callback作为第二个参数。</p>
+<pre><code> var userSchema = new Schema({
+  name: {
+    type: String,
+    // You can also make a validator async by returning a promise. If you
+    // return a promise, do **not** specify the `isAsync` option.
+    validate: function(v) {
+      return new Promise(function(resolve, reject) {
+        setTimeout(function() {
+          resolve(false);
+        }, 5);
+      });
+    }
+  },
+  phone: {
+    type: String,
+    validate: {
+      isAsync: true,
+      validator: function(v, cb) {
+        setTimeout(function() {
+          var phoneRegex = /\d{3}-\d{3}-\d{4}/;
+          var msg = v + &apos; is not a valid phone number!&apos;;
+          // First argument is a boolean, whether validator succeeded
+          // 2nd argument is an optional error message override
+          cb(phoneRegex.test(v), msg);
+        }, 5);
+      },
+      // Default error message, overridden by 2nd argument to `cb()` above
+      message: &apos;Default error message&apos;
+    },
+    required: [true, &apos;User phone number required&apos;]
+  }
+});
+
+var User = db.model(&apos;User&apos;, userSchema);
+var user = new User();
+var error;
+
+user.phone = &apos;555.0123&apos;;
+user.name = &apos;test&apos;;
+user.validate(function(error) {
+  assert.ok(error);
+  assert.equal(error.errors[&apos;phone&apos;].message,
+    &apos;555.0123 is not a valid phone number!&apos;);
+  assert.equal(error.errors[&apos;name&apos;].message,
+    &apos;Validator failed for path `name` with value `test`&apos;);
+});
+</code></pre><h3 id="错误验证"><a href="#错误验证" class="headerlink" title="错误验证"></a>错误验证</h3><p>如果验证失败会返回错误包含了一个错误对象，值为<code>ValidatorError</code>对象。<a href="http://mongoosejs.com/docs/api.html#error-validation-js" target="_blank" rel="noopener">ValidatorError</a>对象有<code>kind</code>、<code>path</code>、<code>value</code>和<code>message</code>等属性。验证器也可能有<code>reason</code>属性，如果执行验证器时发生了错误，<code>reason</code>属性包含抛出的错误。</p>
+<pre><code> var toySchema = new Schema({
+  color: String,
+  name: String
+});
+
+var validator = function(value) {
+  return /red|white|gold/i.test(value);
+};
+toySchema.path(&apos;color&apos;).validate(validator,
+  &apos;Color `{VALUE}` not valid&apos;, &apos;Invalid color&apos;);
+toySchema.path(&apos;name&apos;).validate(function(v) {
+  if (v !== &apos;Turbo Man&apos;) {
+    throw new Error(&apos;Need to get a Turbo Man for Christmas&apos;);
+  }
+  return true;
+}, &apos;Name `{VALUE}` is not valid&apos;);
+
+var Toy = db.model(&apos;Toy&apos;, toySchema);
+
+var toy = new Toy({ color: &apos;Green&apos;, name: &apos;Power Ranger&apos; });
+
+toy.save(function (err) {
+  // `err` is a ValidationError object
+  // `err.errors.color` is a ValidatorError object
+  assert.equal(err.errors.color.message, &apos;Color `Green` not valid&apos;);
+  assert.equal(err.errors.color.kind, &apos;Invalid color&apos;);
+  assert.equal(err.errors.color.path, &apos;color&apos;);
+  assert.equal(err.errors.color.value, &apos;Green&apos;);
+
+  // This is new in mongoose 5. If your validator throws an exception,
+  // mongoose will use that message. If your validator returns `false`,
+  // mongoose will use the &apos;Name `Power Ranger` is not valid&apos; message.
+  assert.equal(err.errors.name.message,
+    &apos;Need to get a Turbo Man for Christmas&apos;);
+  assert.equal(err.errors.name.value, &apos;Power Ranger&apos;);
+  // If your validator threw an error, the `reason` property will contain
+  // the original error thrown, including the original stack trace.
+  assert.equal(err.errors.name.reason.message,
+    &apos;Need to get a Turbo Man for Christmas&apos;);
+
+  assert.equal(err.name, &apos;ValidationError&apos;);
+});
+</code></pre><h3 id="对嵌套对象使用Required验证器"><a href="#对嵌套对象使用Required验证器" class="headerlink" title="对嵌套对象使用Required验证器"></a>对嵌套对象使用Required验证器</h3><p>对类型嵌套对象的属性进行验证是比较棘手的，因为嵌套对象不完全成熟的路径。</p>
+<pre><code>var personSchema = new Schema({
+  name: {
+    first: String,
+    last: String
+  }
+});
+
+assert.throws(function() {
+  // This throws an error, because &apos;name&apos; isn&apos;t a full fledged path
+  personSchema.path(&apos;name&apos;).required(true);
+}, /Cannot.*&apos;required&apos;/);
+
+// To make a nested object required, use a single nested schema
+var nameSchema = new Schema({
+  first: String,
+  last: String
+});
+
+personSchema = new Schema({
+  name: {
+    type: nameSchema,
+    required: true
+  }
+});
+
+var Person = db.model(&apos;Person&apos;, personSchema);
+
+var person = new Person();
+var error = person.validateSync();
+assert.ok(error.errors[&apos;name&apos;]);
+</code></pre><h3 id="更新验证器"><a href="#更新验证器" class="headerlink" title="更新验证器"></a>更新验证器</h3><p>上面实例中，你学习了document的验证。Mongoose也支持执行<code>update()</code>或<code>findOneAndUpdate()</code>时的更新验证。更新验证默认关闭。设置<code>runValidators</code>选项，开启<code>update()</code>或者<code>findOneAndUpdate()</code>的更新验证。请注意，更新验证之所以默认关闭，因为会有一些警告信息。</p>
+<pre><code>var toySchema = new Schema({
+  color: String,
+  name: String
+});
+
+var Toy = db.model(&apos;Toys&apos;, toySchema);
+
+Toy.schema.path(&apos;color&apos;).validate(function (value) {
+  return /blue|green|white|red|orange|periwinkle/i.test(value);
+}, &apos;Invalid color&apos;);
+
+var opts = { runValidators: true };
+Toy.update({}, { color: &apos;bacon&apos; }, opts, function (err) {
+  assert.equal(err.errors.color.message,
+    &apos;Invalid color&apos;);
+});
+</code></pre><h3 id="更新验证器和this"><a href="#更新验证器和this" class="headerlink" title="更新验证器和this"></a>更新验证器和<code>this</code></h3><p>更新验证器和document validator会有些不同。下面示例中，color path的验证函数中this指向正在被验证的document。然而执行更新验证时，document可能不在服务器内存中更新，所以默认this未定义。</p>
+<pre><code>var toySchema = new Schema({
+  color: String,
+  name: String
+});
+
+toySchema.path(&apos;color&apos;).validate(function(value) {
+  // When running in `validate()` or `validateSync()`, the
+  // validator can access the document using `this`.
+  // Does **not** work with update validators.
+  if (this.name.toLowerCase().indexOf(&apos;red&apos;) !== -1) {
+    return value !== &apos;red&apos;;
+  }
+  return true;
+});
+
+var Toy = db.model(&apos;ActionFigure&apos;, toySchema);
+
+var toy = new Toy({ color: &apos;red&apos;, name: &apos;Red Power Ranger&apos; });
+var error = toy.validateSync();
+assert.ok(error.errors[&apos;color&apos;]);
+
+var update = { color: &apos;red&apos;, name: &apos;Red Power Ranger&apos; };
+var opts = { runValidators: true };
+
+Toy.update({}, update, opts, function(error) {
+  // The update validator throws an error:
+  // &quot;TypeError: Cannot read property &apos;toLowerCase&apos; of undefined&quot;,
+  // because `this` is **not** the document being updated when using
+  // update validators
+  assert.ok(error);
+});
+</code></pre><h3 id="context选项"><a href="#context选项" class="headerlink" title="context选项"></a><code>context</code>选项</h3><p>设置context选项，使this值在更新验证时指向隐藏的query。</p>
+<pre><code>var toySchema = new Schema({
+  color: String,
+  name: String
+});
+
+toySchema.path(&apos;color&apos;).validate(function(value) {
+  // When running in `validate()` or `validateSync()`, the
+  // validator can access the document using `this`.
+  // Does **not** work with update validators.
+  if (this.name.toLowerCase().indexOf(&apos;red&apos;) !== -1) {
+    return value !== &apos;red&apos;;
+  }
+  return true;
+});
+
+var Toy = db.model(&apos;ActionFigure&apos;, toySchema);
+
+var toy = new Toy({ color: &apos;red&apos;, name: &apos;Red Power Ranger&apos; });
+var error = toy.validateSync();
+assert.ok(error.errors[&apos;color&apos;]);
+
+var update = { color: &apos;red&apos;, name: &apos;Red Power Ranger&apos; };
+var opts = { runValidators: true };
+
+Toy.update({}, update, opts, function(error) {
+  // The update validator throws an error:
+  // &quot;TypeError: Cannot read property &apos;toLowerCase&apos; of undefined&quot;,
+  // because `this` is **not** the document being updated when using
+  // update validators
+  assert.ok(error);
+});
+</code></pre><h3 id="指定需要更新验证器的路径"><a href="#指定需要更新验证器的路径" class="headerlink" title="指定需要更新验证器的路径"></a>指定需要更新验证器的路径</h3><p>请注意一个非常重要的细节，只有在执行以下更新操作时，更新验证器才会运行：</p>
+<ul>
+<li><code>$set</code></li>
+<li><code>$unset</code></li>
+<li><code>$push(&gt;=4.8.0)</code></li>
+<li><code>$addToSet(&gt;=4.8.0)</code></li>
+<li><code>$pull(&gt;=4.12.0)</code></li>
+<li><code>$pullAll(&gt;=4.12.0)</code></li>
+</ul>
+<p>下例中的更新不会检查<code>number</code>值，所以更新可以执行成功，因为<code>$inc</code>操作不会执行更新验证器。 <code>$push</code>、<code>$addToSet</code>、<code>$pull</code>和<code>$pullAll</code>等操作不会验证数组本身，只会单独的验证数组中的元素。</p>
+<pre><code>var testSchema = new Schema({
+  number: { type: Number, max: 0 },
+  arr: [{ message: { type: String, maxlength: 10 } }]
+});
+
+// Update validators won&apos;t check this, so you can still `$push` 2 elements
+// onto the array, so long as they don&apos;t have a `message` that&apos;s too long.
+testSchema.path(&apos;arr&apos;).validate(function(v) {
+  return v.length &lt; 2;
+});
+
+var Test = db.model(&apos;Test&apos;, testSchema);
+
+var update = { $inc: { number: 1 } };
+var opts = { runValidators: true };
+Test.update({}, update, opts, function(error) {
+  // There will never be a validation error here
+  update = { $push: [{ message: &apos;hello&apos; }, { message: &apos;world&apos; }] };
+  Test.update({}, update, opts, function(error) {
+    // This will never error either even though the array will have at
+    // least 2 elements.
+  });
+});
+</code></pre><h3 id="push和-addToSet的更新验证"><a href="#push和-addToSet的更新验证" class="headerlink" title="$push和$addToSet的更新验证"></a><code>$push</code>和<code>$addToSet</code>的更新验证</h3><p>执行<code>$push</code>和<code>$addToSet</code>操作时，也会执行更新验证器。</p>
+<pre><code>var testSchema = new Schema({
+  numbers: [{ type: Number, max: 0 }],
+  docs: [{
+    name: { type: String, required: true }
+  }]
+});
+
+var Test = db.model(&apos;TestPush&apos;, testSchema);
+
+var update = {
+  $push: {
+    numbers: 1,
+    docs: { name: null }
+  }
+};
+var opts = { runValidators: true };
+Test.update({}, update, opts, function(error) {
+  assert.ok(error.errors[&apos;numbers&apos;]);
+  assert.ok(error.errors[&apos;docs&apos;]);
+});
+</code></pre><h2 id="下一章-——-Middleware"><a href="#下一章-——-Middleware" class="headerlink" title="下一章 —— Middleware"></a>下一章 —— <a href="https://github.com/dreamFlyingCat/mongoose-API/blob/master/docs/Schemas/Middleware.md" target="_blank" rel="noopener">Middleware</a></h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    post.last_updated<time datetime="2018-04-09T04:18:03.192Z" itemprop="dateUpdated">2018-04-09 12:18:03</time>
+</span><br>
+
+
+        
+        欢迎留言~~~
+        
+    </div>
+    
+    <footer>
+        <a href="https://dreamflyingcat.github.io">
+            <img src="/img/avatar.jpg" alt="MissLiu">
+            MissLiu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&title=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&title=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between flex-row-reverse">
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/09/mongoose-Subdocuments/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mongoose v5.0.12 中文API - Subdocuments</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            var hyper_id = 'true';
+            _hcwp = window._hcwp || [];
+            _hcwp.push({
+                widget: "Stream",
+                widget_id: hyper_id
+            });
+            (function () {
+                if ("HC_LOAD_INIT" in window) return;
+                HC_LOAD_INIT = true;
+                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(
+                    0, 2).toLowerCase();
+                var hcc = document.createElement("script");
+                hcc.type = "text/javascript";
+                hcc.async = true;
+                hcc.src = ("https:" == document.location.protocol ? "https" : "http") +
+                    "://w.hypercomments.com/widget/hc/" + hyper_id + "/" + lang + "/widget.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+
+        </script>
+        <a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+    </section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>MissLiu &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&title=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&title=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - Validation》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Validation/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACsElEQVR42u3aQU4DMQwF0N7/0rCtBMx82zGM0MuqKm2SN0ixa+f1isfH2/j6zvv773/96ZPX43rF18bAw8PDG2w9X+x6huu1kncS6vWe8fDw8LZ511tJQkI+T/KY8v3cWPDw8PAexssXrn4SDw8P7z/xeulyvrkk8ODh4eE9gVed+rqIkJQYJqWQlVoLHh4eXsybpLN/9Xqlv4eHh4c37qpX21rzp1tts93sFg8PD2+BVy009AB5gl5N06N94uHh4R3lTZr9Z6+c9nZyc1kWDw8P71d4N18oHutJYyxpfTWDFh4eHt4yL4FV0+teISNZsVyGwMPDwzvKq166mhdtq6l28tCbVWE8PDy8Q7wkwT1VpEiO+yRPvunv4eHh4R3iJQGgWlCoBpjeWnkhGA8PD+8sL2/q98JGPs+kmPujAg8PD2+B15u019B6DcaowYaHh4d3lDc/mqvtq2QkYSMq8uLh4eEt8K63m0ydF1jnhYY8MEQT4eHh4Y15yeby4zgPNqfWvQljeHh4eId4vatUvVS7V6SoJs3f3IzAw8PDO8rLw0M1JCTJdK+tVb3IhYeHh7fHmzS98tfVCwR56aHwf8PDw8Mb8D5a4wmpdrQuHh4e3gKv1wA7lRznYaBXMsbDw8Pb480vQiULJwlx9VFG6TgeHh7eMm9Sbpi/Uw05o4wbDw8Pb4E3aYn1Nl29KFBofeHh4eEt8KrgyVHeY+Qz4+Hh4e3xJq2vPGDkYSNJ1gs/APDw8PAWeL2j/FQK3rsIWy2O4OHh4W3w8tZX71vVi1bJtYDCzwA8PDy8NV5yxB9bMqmRtAoQeHh4eM/k9UoA85CTJO54eHh4z+flLbRewp13ssoxBw8PD2/Mq5YVeiXapPRQTcELd8rw8PDwDvGad7Vay1SP9WYwwMPDw9vifQI+/z+kDt89/gAAAABJRU5ErkJggg==" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '天道酬勤';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

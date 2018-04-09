@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mongoose v5.0.12 中文API - SchemaTypes | dreamFlyingCat | 书山有路勤为径，学海无涯苦作舟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  SchemaTypesSchemaTypes定义路径（path）的dufaults、validation、getters、setters及查询时默认选择的field等属性，还有Strings和Numbers的其他的一些特征。 下面是mongoose中可用的SchemaTypes：  String Number">
+<meta name="keywords" content="前端、全栈、node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose v5.0.12 中文API - SchemaTypes">
+<meta property="og:url" content="https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/index.html">
+<meta property="og:site_name" content="dreamFlyingCat">
+<meta property="og:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  SchemaTypesSchemaTypes定义路径（path）的dufaults、validation、getters、setters及查询时默认选择的field等属性，还有Strings和Numbers的其他的一些特征。 下面是mongoose中可用的SchemaTypes：  String Number">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T04:16:38.058Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongoose v5.0.12 中文API - SchemaTypes">
+<meta name="twitter:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  SchemaTypesSchemaTypes定义路径（path）的dufaults、validation、getters、setters及查询时默认选择的field等属性，还有Strings和Numbers的其他的一些特征。 下面是mongoose中可用的SchemaTypes：  String Number">
+    
+        <link rel="alternate" type="application/atom+xml" title="dreamFlyingCat" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MissLiu</h5>
+          <a href="mailto:1293925288@qq.com" title="1293925288@qq.com" class="mail">1293925288@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/dreamFlyingCat" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mongoose v5.0.12 中文API - SchemaTypes</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="关键字查找">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mongoose v5.0.12 中文API - SchemaTypes</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-09T04:16:19.399Z" itemprop="datePublished" class="page-time">
+  2018-04-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SchemaTypes"><span class="post-toc-number">1.</span> <span class="post-toc-text">SchemaTypes</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#例子"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">例子</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#SchemaType选项设置"><span class="post-toc-number">2.</span> <span class="post-toc-text">SchemaType选项设置</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#适用于所有schema类型的选项"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">适用于所有schema类型的选项</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#indexes"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">indexes</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#String"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">String</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Number"><span class="post-toc-number">2.4.</span> <span class="post-toc-text">Number</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Date"><span class="post-toc-number">2.5.</span> <span class="post-toc-text">Date</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#使用注意事项"><span class="post-toc-number">3.</span> <span class="post-toc-text">使用注意事项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Mixed"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">Mixed</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#ObjectIds"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">ObjectIds</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Arrays"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">Arrays</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建自定义的类型"><span class="post-toc-number">4.</span> <span class="post-toc-text">创建自定义的类型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#schema-path-函数"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">schema.path()函数</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下一章-——-Connections"><span class="post-toc-number"></span> <span class="post-toc-text">下一章 —— Connections</span></a>
+        </nav>
+    </aside>
+
+
+<article id="post-mongoose-SchemaTypes"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mongoose v5.0.12 中文API - SchemaTypes</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-09 12:16:19" datetime="2018-04-09T04:16:19.399Z"  itemprop="datePublished">2018-04-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>官方原版：<a href="http://mongoosejs.com" target="_blank" rel="noopener">http://mongoosejs.com</a><br>引用请注明出处和转载请注明出处</p>
+</blockquote>
+<h3 id="SchemaTypes"><a href="#SchemaTypes" class="headerlink" title="SchemaTypes"></a>SchemaTypes</h3><p>SchemaTypes定义路径（path）的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-default" target="_blank" rel="noopener">dufaults</a>、<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-validate" target="_blank" rel="noopener">validation</a>、<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-get" target="_blank" rel="noopener">getters</a>、<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-set" target="_blank" rel="noopener">setters</a>及查询时默认选择的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType-select" target="_blank" rel="noopener">field</a>等属性，还有Strings和Numbers的其他的一些特征。</p>
+<p>下面是mongoose中可用的SchemaTypes：</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Date</li>
+<li>Buffer</li>
+<li>Boolean</li>
+<li>Mixed</li>
+<li>Objectid</li>
+<li>Array</li>
+<li>Decimal128</li>
+</ul>
+<h4 id="例子"><a href="#例子" class="headerlink" title="例子"></a>例子</h4><pre><code>var schema = new Schema({
+  name:    String,
+  binary:  Buffer,
+  living:  Boolean,
+  updated: { type: Date, default: Date.now },
+  age:     { type: Number, min: 18, max: 65 },
+  mixed:   Schema.Types.Mixed,
+  _someId: Schema.Types.ObjectId,
+  decimal: Schema.Types.Decimal128,
+  array:      [],
+  ofString:   [String],
+  ofNumber:   [Number],
+  ofDates:    [Date],
+  ofBuffer:   [Buffer],
+  ofBoolean:  [Boolean],
+  ofMixed:    [Schema.Types.Mixed],
+  ofObjectId: [Schema.Types.ObjectId],
+  ofArrays:   [[]],
+  ofArrayOfNumbers: [[Number]],
+  nested: {
+    stuff: { type: String, lowercase: true, trim: true }
+  }
+})
+
+// example use
+
+var Thing = mongoose.model(&apos;Thing&apos;, schema);
+
+var m = new Thing;
+m.name = &apos;Statue of Liberty&apos;;
+m.age = 125;
+m.updated = new Date;
+m.binary = new Buffer(0);
+m.living = false;
+m.mixed = { any: { thing: &apos;i want&apos; } };
+m.markModified(&apos;mixed&apos;);
+m._someId = new mongoose.Types.ObjectId;
+m.array.push(1);
+m.ofString.push(&quot;strings!&quot;);
+m.ofNumber.unshift(1,2,3,4);
+m.ofDates.addToSet(new Date);
+m.ofBuffer.pop();
+m.ofMixed = [1, [], &apos;three&apos;, { four: 5 }];
+m.nested.stuff = &apos;good&apos;;
+m.save(callback);
+</code></pre><h3 id="SchemaType选项设置"><a href="#SchemaType选项设置" class="headerlink" title="SchemaType选项设置"></a>SchemaType选项设置</h3><p>你可以直接使用可用的type类型来声明一个schema type或者使用一个包含type字段的对象</p>
+<pre><code>var schema1 = new Schema({
+  test: String // `test` is a path of type String
+});
+
+var schema2 = new Schema({
+  test: { type: String } // `test` is a path of type string
+});
+</code></pre><p>除了type之外你还可以给path指定其他的一些属性，例如，你想要在保存字符串之前将它转化为小写。</p>
+<pre><code>var schema2 = new Schema({
+  test: {
+    type: String,
+    lowercase: true // Always convert `test` to lowercase
+  }
+});
+</code></pre><p>只有string类型的字段可以设置<code>lowercase</code>属性。有些选项适用于所有的schema类型，有些只适用于指定的schema类型。</p>
+<h4 id="适用于所有schema类型的选项"><a href="#适用于所有schema类型的选项" class="headerlink" title="适用于所有schema类型的选项"></a>适用于所有schema类型的选项</h4><ul>
+<li>required：boolean或者function，如果值为true时可以为字段添加一个必须验证器；</li>
+<li>default：任意值或者function，用于给path设置默认值，如果值是一个函数，其返回值作为path的默认值；</li>
+<li>select：boolean，指明查询时选择的字段；</li>
+<li>validate：function，为字段添加验证器函数；</li>
+<li>get：function，使用Object.defineProperty为字段自定义getter函数;</li>
+<li>set：function，使用Object.defineProperty为字段自定义setter函数;</li>
+<li><p>alias：stirng，mongoose&gt;=4.10.0才可以使用，为给定的字段设置一个别名，通过<code>sets/gets</code>设置或获取值；</p>
+<p> var numberSchema = new Schema({<br>   integerOnly: {</p>
+<pre><code>type: Number,
+get: v =&gt; Math.round(v),
+set: v =&gt; Math.round(v),
+alias: &apos;i&apos;
+</code></pre><p>   }<br> });</p>
+<p> var Number = mongoose.model(‘Number’, numberSchema);</p>
+<p> var doc = new Number();<br> doc.integerOnly = 2.001;<br> doc.integerOnly; // 2<br> doc.i; // 2<br> doc.i = 3.001;<br> doc.integerOnly; // 3<br> doc.i; // 3</p>
+</li>
+</ul>
+<h4 id="indexes"><a href="#indexes" class="headerlink" title="indexes"></a>indexes</h4><p>可以通过设置schema类型的选项来定义mongoDB的索引；</p>
+<ul>
+<li>index：boolean，是否在该字段上建立索引（建立索引加快搜索速度，拖慢更新速度，因为更新数据时索引也要更新）；</li>
+<li>unique：boolean，是否在该字段上定义唯一的索引；</li>
+<li><p>sparse：boolean，是否在该字段上建立稀疏索引（稀疏索引会跳过键值不存在的文档）。</p>
+<p> var schema2 = new Schema({<br> test: {<br>   type: String,<br>   index: true,<br>   unique: true // Unique index. If you specify <code>unique: true</code><br>   // specifying <code>index: true</code> is optional if you do <code>unique: true</code><br> }<br> });</p>
+</li>
+</ul>
+<h4 id="String"><a href="#String" class="headerlink" title="String"></a>String</h4><ul>
+<li>lowercase：boolean，是否总是调用toLowerCase()函数将字段值转为小写；</li>
+<li>uppercase：boolean，是否总是调用toUpperCase()函数将字段值转为大写；</li>
+<li>trim：boolean，是否总是调用trim()去掉字段值中的空格；</li>
+<li>match：RegExp，创建一个验证器检查字段值是否符合给出的正则表达式；</li>
+<li>enum：Array，一个验证器用于检查字段值是否在给定的数组中。</li>
+</ul>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li>min：Number，创建一个验证器用于检查字段值是否大于或等于给定的最小值；</li>
+<li>max：Number，创建一个验证器用于检查字段值是否小于或等于给定的最大值。</li>
+</ul>
+<h4 id="Date"><a href="#Date" class="headerlink" title="Date"></a>Date</h4><ul>
+<li>min：Date（日期需大于等于min值）；</li>
+<li>max：Date（日期需小于等于max值）。</li>
+</ul>
+<h3 id="使用注意事项"><a href="#使用注意事项" class="headerlink" title="使用注意事项"></a>使用注意事项</h3><p>Date对象内置的方法并没有和Mongoose关联起来，这意味着如果你调用Date的方法修改Document的Date类型值并保存并不会起作用，因为mongoose意识不到Date值变了，所以<code>doc.save()</code>无法保存修改。如果你必须使用内置的方法修改Date类型的值，保存前请调用<code>doc.marckModified(&#39;pathToYourDate&#39;)</code>通知mongoose此更改。</p>
+<pre><code>var Assignment = mongoose.model(&apos;Assignment&apos;, { dueDate: Date });
+Assignment.findOne(function (err, doc) {
+  doc.dueDate.setMonth(3);
+  doc.save(callback); // THIS DOES NOT SAVE YOUR CHANGE
+
+  doc.markModified(&apos;dueDate&apos;);
+  doc.save(callback); // works
+})
+</code></pre><h4 id="Mixed"><a href="#Mixed" class="headerlink" title="Mixed"></a>Mixed</h4><p>Mixed类型接受任意类型的值，该类型虽然很灵活但是却难以维护，在schema中可以定义Mixed类型的字段。下面的几种方法是等价的，都可以声明字段为Mixed类型。</p>
+<pre><code>var Any = new Schema({ any: {} });
+var Any = new Schema({ any: Object });
+var Any = new Schema({ any: Schema.Types.Mixed });
+</code></pre><p>Mixed属于chema-less类型的一种，你可以改变值为任意你想要的类型，但是mongoose失去了自动检测值的修改并保存修改的能力。如果你修改了Mixed类型的值，需要调用<code>doc.markModified(path)</code>方法通知mongoose该修改。</p>
+<pre><code>person.anything = { x: [3, 4, { y: &quot;changed&quot; }] };
+person.markModified(&apos;anything&apos;);
+person.save(); // anything will now get saved
+</code></pre><h4 id="ObjectIds"><a href="#ObjectIds" class="headerlink" title="ObjectIds"></a>ObjectIds</h4><p>声明字段时，设置类型为<code>Schema.Types.ObjectId</code>，指定值为ObjectId的一种类型。</p>
+<pre><code>var mongoose = require(&apos;mongoose&apos;);
+var ObjectId = mongoose.Schema.Types.ObjectId;
+var Car = new Schema({ driver: ObjectId });
+// or just Schema.ObjectId for backwards compatibility with v2
+</code></pre><h4 id="Arrays"><a href="#Arrays" class="headerlink" title="Arrays"></a>Arrays</h4><p>设置字段值类型为<a href="http://mongoosejs.com/docs/api.html#schema_Schema.Types" target="_blank" rel="noopener">SchemaTypes</a>或者<a href="http://mongoosejs.com/docs/subdocs.html" target="_blank" rel="noopener">Sub-Documents</a>类型的数组。</p>
+<pre><code>var ToySchema = new Schema({ name: String });
+var ToyBox = new Schema({
+  toys: [ToySchema],
+  buffers: [Buffer],
+  string:  [String],
+  numbers: [Number]
+  // ... etc
+});
+</code></pre><blockquote>
+<p>注意：如果数组为空等价于<code>Mixed</code>类型，下列方法均创建元素为<code>Mixed</code>类型的数组。</p>
+</blockquote>
+<pre><code>var Empty1 = new Schema({ any: [] });
+var Empty2 = new Schema({ any: Array });
+var Empty3 = new Schema({ any: [Schema.Types.Mixed] });
+var Empty4 = new Schema({ any: [{}] });
+</code></pre><p>设置默认值为<code>undefined</code>重写默认情况</p>
+<pre><code>var ToySchema = new Schema({
+  toys: {
+    type: [ToySchema],
+    default: undefined
+  }
+});
+</code></pre><h3 id="创建自定义的类型"><a href="#创建自定义的类型" class="headerlink" title="创建自定义的类型"></a>创建自定义的类型</h3><p>mongoose支持<a href="http://plugins.mongoosejs.io/" target="_blank" rel="noopener">plugins</a>扩展自定义schemaTypes，查看<a href="http://plugins.mongoosejs.io/" target="_blank" rel="noopener">plugins</a>网站查看可用的类型，例如<a href="https://github.com/aheckmann/mongoose-long" target="_blank" rel="noopener">mongoose-long</a>、<a href="https://github.com/vkarpov15/mongoose-int32" target="_blank" rel="noopener">mongoose-int32</a>还有其他的类型。</p>
+<h4 id="schema-path-函数"><a href="#schema-path-函数" class="headerlink" title="schema.path()函数"></a><code>schema.path()</code>函数</h4><p><code>schema.path()</code>函数返回指定path的实例化的schema类型。</p>
+<pre><code>var sampleSchema = new Schema({ name: { type: String, required: true } });
+console.log(sampleSchema.path(&apos;name&apos;));
+// Output looks like:
+/**
+* SchemaString {
+*   enumValues: [],
+*   regExp: null,
+*   path: &apos;name&apos;,
+*   instance: &apos;String&apos;,
+*   validators: ...
+*/
+</code></pre><p>可以使用该函数查看path的schema类型，包括验证器和字段的类型。</p>
+<h2 id="下一章-——-Connections"><a href="#下一章-——-Connections" class="headerlink" title="下一章 —— Connections"></a>下一章 —— <a href="https://github.com/dreamFlyingCat/mongoose-API/blob/master/docs/Schemas/Connections.md" target="_blank" rel="noopener">Connections</a></h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    post.last_updated<time datetime="2018-04-09T04:16:38.058Z" itemprop="dateUpdated">2018-04-09 12:16:38</time>
+</span><br>
+
+
+        
+        欢迎留言~~~
+        
+    </div>
+    
+    <footer>
+        <a href="https://dreamflyingcat.github.io">
+            <img src="/img/avatar.jpg" alt="MissLiu">
+            MissLiu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&title=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&title=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/09/mongoose-Subdocuments/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mongoose v5.0.12 中文API - Subdocuments</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/09/mongoose-Queries/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">mongoose v5.0.12 中文API - Queries</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            var hyper_id = 'true';
+            _hcwp = window._hcwp || [];
+            _hcwp.push({
+                widget: "Stream",
+                widget_id: hyper_id
+            });
+            (function () {
+                if ("HC_LOAD_INIT" in window) return;
+                HC_LOAD_INIT = true;
+                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(
+                    0, 2).toLowerCase();
+                var hcc = document.createElement("script");
+                hcc.type = "text/javascript";
+                hcc.async = true;
+                hcc.src = ("https:" == document.location.protocol ? "https" : "http") +
+                    "://w.hypercomments.com/widget/hc/" + hyper_id + "/" + lang + "/widget.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+
+        </script>
+        <a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+    </section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>MissLiu &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&title=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&title=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - SchemaTypes》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-SchemaTypes/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAN4AAADeCAAAAAB3DOFrAAACoElEQVR42u3aQW7DQAgF0Nz/0u22UmXnA4OVSM+rKLE9fl4MBHi94uPn4vj/69VVf7+5/5xce/jAw8PDO/To94CrxZKHuLrz1eqTq/Dw8PD2eMlDJMskm36+1uQcPDw8vM/h5dv0HgkPDw/vu3j35+dlhfsze8EGDw8P70lefuv7wNBLtXulkMO1Fjw8PLyYl3eRPufzSn8PDw8Pb9xV3wgSvVS7+bR4eHh4C7xqg6qaEM9Lur374OHh4e3xqlvwZCwgKTScDTl4eHh4e7wkaU5aTdUybiF29c7Hw8PDW+P1Uufq9j25fzWJx8PDw9vjJUtOFk7S62r7rdwMw8PDw1vm9UademXffLs/EP3w8PDwDvF6qXNOSn6tjibkwQMPDw9vg5cXZKsJbiHljVtlzb8EeHh4eEd51aLAXmF30hKLRgfw8PDwHuTlo6j5Nzny2NAVHh4e3lFer+F0qn3VKwo3yxB4eHh4h3hJoysvxfYefXKfUWcPDw8Pr8WrPmheeO1t9Hnb7M35eHh4eAu8XsmgmgRXHzEpPRSCBx4eHt5RXt6kn48C5GXcXumh8I8BDw8Pb8Cbl1arW3x+TF4iHh4e3h5v0trPk+a86NArRlwGFTw8PLwFXm8Tf7WOvNTbCzl4eHh4T/KqTf1JO3/eEmu+Vzw8PLwFXrLJVhtg5ZR3cH4h1uHh4eGt8XpFgepIwdnA8KaYi4eHhzfmTZpS5dmuceMtH+G6HLrCw8PDG/OeLMLmryNZK2/U4eHh4W3wqrfuJdzz8NAcU8DDw8Nb401Ksfl4Vq+EUX01eHh4eJ/My9PraoCplh5WAgMeHh7eUd58+66WHnI8Hh4e3jO8ZLFq0aE3THAqUOHh4eHt8eZ/+Ktho0raGM/Cw8PDa/F+AUB1XpPYcXAgAAAAAElFTkSuQmCC" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '天道酬勤';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>

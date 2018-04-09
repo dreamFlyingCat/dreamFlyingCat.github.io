@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+<html>
+<head>
+    
+
+    
+
+    
+
+
+
+    <meta charset="utf-8">
+    
+    
+    
+    
+    <title>mongoose v5.0.12 中文API - 纲要 | dreamFlyingCat | 书山有路勤为径，学海无涯苦作舟</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <meta name="theme-color" content="#3F51B5">
+    
+    
+    <meta name="keywords" content="">
+    <meta name="description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  纲要如果你还不了解Mongoose如何工作，请先阅读quickstart章节。如果你是从4.x版本迁移到5.x，请花点时间阅读迁移指南。 定义你的schema在mongoose中一切都是从schema开始的，schema会被映射为mongoDB中的collection，并且定义了collection中docum">
+<meta name="keywords" content="前端、全栈、node">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mongoose v5.0.12 中文API - 纲要">
+<meta property="og:url" content="https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/index.html">
+<meta property="og:site_name" content="dreamFlyingCat">
+<meta property="og:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  纲要如果你还不了解Mongoose如何工作，请先阅读quickstart章节。如果你是从4.x版本迁移到5.x，请花点时间阅读迁移指南。 定义你的schema在mongoose中一切都是从schema开始的，schema会被映射为mongoDB中的collection，并且定义了collection中docum">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2018-04-09T04:15:54.813Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mongoose v5.0.12 中文API - 纲要">
+<meta name="twitter:description" content="官方原版：http://mongoosejs.com引用请注明出处和转载请注明出处  纲要如果你还不了解Mongoose如何工作，请先阅读quickstart章节。如果你是从4.x版本迁移到5.x，请花点时间阅读迁移指南。 定义你的schema在mongoose中一切都是从schema开始的，schema会被映射为mongoDB中的collection，并且定义了collection中docum">
+    
+        <link rel="alternate" type="application/atom+xml" title="dreamFlyingCat" href="/atom.xml">
+    
+    <link rel="shortcut icon" href="/favicon.ico">
+    <link rel="stylesheet" href="//unpkg.com/hexo-theme-material-indigo@latest/css/style.css">
+    <script>window.lazyScripts=[]</script>
+
+    <!-- custom head -->
+    
+
+</head>
+
+<body>
+    <div id="loading" class="active"></div>
+
+    <aside id="menu"  >
+  <div class="inner flex-row-vertical">
+    <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menu-off">
+        <i class="icon icon-lg icon-close"></i>
+    </a>
+    <div class="brand-wrap" style="background-image:url(/img/brand.jpg)">
+      <div class="brand">
+        <a href="/" class="avatar waves-effect waves-circle waves-light">
+          <img src="/img/avatar.jpg">
+        </a>
+        <hgroup class="introduce">
+          <h5 class="nickname">MissLiu</h5>
+          <a href="mailto:1293925288@qq.com" title="1293925288@qq.com" class="mail">1293925288@qq.com</a>
+        </hgroup>
+      </div>
+    </div>
+    <div class="scroll-wrap flex-col">
+      <ul class="nav">
+        
+            <li class="waves-block waves-effect">
+              <a href="/"  >
+                <i class="icon icon-lg icon-home"></i>
+                主页
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="/archives"  >
+                <i class="icon icon-lg icon-archives"></i>
+                Archives
+              </a>
+            </li>
+        
+            <li class="waves-block waves-effect">
+              <a href="https://github.com/dreamFlyingCat" target="_blank" >
+                <i class="icon icon-lg icon-github"></i>
+                Github
+              </a>
+            </li>
+        
+      </ul>
+    </div>
+  </div>
+</aside>
+
+    <main id="main">
+        <header class="top-header" id="header">
+    <div class="flex-row">
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light on" id="menu-toggle">
+          <i class="icon icon-lg icon-navicon"></i>
+        </a>
+        <div class="flex-col header-title ellipsis">mongoose v5.0.12 中文API - 纲要</div>
+        
+        <div class="search-wrap" id="search-wrap">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="back">
+                <i class="icon icon-lg icon-chevron-left"></i>
+            </a>
+            <input type="text" id="key" class="search-input" autocomplete="off" placeholder="关键字查找">
+            <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="search">
+                <i class="icon icon-lg icon-search"></i>
+            </a>
+        </div>
+        
+        
+        <a href="javascript:;" class="header-icon waves-effect waves-circle waves-light" id="menuShare">
+            <i class="icon icon-lg icon-share-alt"></i>
+        </a>
+        
+    </div>
+</header>
+<header class="content-header post-header">
+
+    <div class="container fade-scale">
+        <h1 class="title">mongoose v5.0.12 中文API - 纲要</h1>
+        <h5 class="subtitle">
+            
+                <time datetime="2018-04-09T04:09:45.965Z" itemprop="datePublished" class="page-time">
+  2018-04-09
+</time>
+
+
+            
+        </h5>
+    </div>
+
+    
+
+
+</header>
+
+
+<div class="container body-wrap">
+    
+    <aside class="post-widget">
+        <nav class="post-toc-wrap post-toc-shrink" id="post-toc">
+            <h4>TOC</h4>
+            <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#纲要"><span class="post-toc-number">1.</span> <span class="post-toc-text">纲要</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#定义你的schema"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">定义你的schema</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#创建一个model"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">创建一个model</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#实例方法"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">实例方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#静态方法"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">静态方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#查询助手"><span class="post-toc-number">1.5.</span> <span class="post-toc-text">查询助手</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#索引"><span class="post-toc-number">1.6.</span> <span class="post-toc-text">索引</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#虚拟属性"><span class="post-toc-number">1.7.</span> <span class="post-toc-text">虚拟属性</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#别名"><span class="post-toc-number">1.7.1.</span> <span class="post-toc-text">别名</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#选项"><span class="post-toc-number">1.8.</span> <span class="post-toc-text">选项</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#autoIndex"><span class="post-toc-number">1.8.1.</span> <span class="post-toc-text">autoIndex</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#bufferCommands"><span class="post-toc-number">1.8.2.</span> <span class="post-toc-text">bufferCommands</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#capped"><span class="post-toc-number">1.8.3.</span> <span class="post-toc-text">capped</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#collection"><span class="post-toc-number">1.8.4.</span> <span class="post-toc-text">collection</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#id"><span class="post-toc-number">1.8.5.</span> <span class="post-toc-text">id</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#id-1"><span class="post-toc-number">1.8.6.</span> <span class="post-toc-text">_id</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#minimize"><span class="post-toc-number">1.8.7.</span> <span class="post-toc-text">minimize</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#read"><span class="post-toc-number">1.8.8.</span> <span class="post-toc-text">read</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#shardKey"><span class="post-toc-number">1.8.9.</span> <span class="post-toc-text">shardKey</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strict"><span class="post-toc-number">1.8.10.</span> <span class="post-toc-text">strict</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#strictQuery"><span class="post-toc-number">1.8.11.</span> <span class="post-toc-text">strictQuery</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#toJSON"><span class="post-toc-number">1.8.12.</span> <span class="post-toc-text">toJSON</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#toObject"><span class="post-toc-number">1.8.13.</span> <span class="post-toc-text">toObject</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#typeKey"><span class="post-toc-number">1.8.14.</span> <span class="post-toc-text">typeKey</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#validateBeforeSave"><span class="post-toc-number">1.8.15.</span> <span class="post-toc-text">validateBeforeSave</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#versionKey"><span class="post-toc-number">1.8.16.</span> <span class="post-toc-text">versionKey</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#collation"><span class="post-toc-number">1.8.17.</span> <span class="post-toc-text">collation</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#skipVersioning"><span class="post-toc-number">1.8.18.</span> <span class="post-toc-text">skipVersioning</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#timestamps"><span class="post-toc-number">1.8.19.</span> <span class="post-toc-text">timestamps</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#useNestedStrict"><span class="post-toc-number">1.8.20.</span> <span class="post-toc-text">useNestedStrict</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#Pluggable"><span class="post-toc-number">1.8.21.</span> <span class="post-toc-text">Pluggable</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#下一章-——-SchemaTypes"><span class="post-toc-number">2.</span> <span class="post-toc-text">下一章 —— SchemaTypes</span></a></li></ol>
+        </nav>
+    </aside>
+
+
+<article id="post-mongoose-Schema"
+  class="post-article article-type-post fade" itemprop="blogPost">
+
+    <div class="post-card">
+        <h1 class="post-card-title">mongoose v5.0.12 中文API - 纲要</h1>
+        <div class="post-meta">
+            <time class="post-time" title="2018-04-09 12:09:45" datetime="2018-04-09T04:09:45.965Z"  itemprop="datePublished">2018-04-09</time>
+
+            
+
+
+            
+<span id="busuanzi_container_page_pv" title="文章总阅读量" style='display:none'>
+    <i class="icon icon-eye icon-pr"></i><span id="busuanzi_value_page_pv"></span>
+</span>
+
+
+        </div>
+        <div class="post-content" id="post-content" itemprop="postContent">
+            <blockquote>
+<p>官方原版：<a href="http://mongoosejs.com" target="_blank" rel="noopener">http://mongoosejs.com</a><br>引用请注明出处和转载请注明出处</p>
+</blockquote>
+<h2 id="纲要"><a href="#纲要" class="headerlink" title="纲要"></a>纲要</h2><p>如果你还不了解Mongoose如何工作，请先阅读<a href="http://mongoosejs.com/docs/index.html" target="_blank" rel="noopener">quickstart</a>章节。如果你是从4.x版本迁移到5.x，请花点时间阅读<a href="https://github.com/Automattic/mongoose/blob/master/migrating_to_5.md" target="_blank" rel="noopener">迁移指南</a>。</p>
+<h3 id="定义你的schema"><a href="#定义你的schema" class="headerlink" title="定义你的schema"></a>定义你的schema</h3><p>在mongoose中一切都是从schema开始的，schema会被映射为mongoDB中的collection，并且定义了collection中documents的形式。</p>
+<pre><code>var mongoose = require(&apos;mongoose&apos;);
+var Schema = mongoose.Schema;
+
+var blogSchema = new Schema({
+    title:  String,
+    author: String,
+    body:   String,
+    comments: [{ body: String, date: Date }],
+    date: { type: Date, default: Date.now },
+    hidden: Boolean,
+    meta: {
+    votes: Number,
+    favs:  Number
+    }
+});
+</code></pre><p>如果你之后想额外的增加keys，可以使用<a href="http://mongoosejs.com/docs/api.html#schema_Schema-add" target="_blank" rel="noopener">Schema#add</a>方法。</p>
+<p>在我们的blogSchema中每个key对应document中的一个字段并且有一个关联的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType" target="_blank" rel="noopener">SchemaType</a>。例如，我们定义的<code>title</code>字段的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType" target="_blank" rel="noopener">SchemaType</a>为String类型，<code>date</code>的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType" target="_blank" rel="noopener">SchemaType</a>是Date类型。keys也可以定义为嵌套的objects，包含了进一步的键/类型的定义，例如上面的<code>meta</code>属性。</p>
+<p>下面是允许的schemaTypes类型：</p>
+<ul>
+<li>String</li>
+<li>Number</li>
+<li>Date</li>
+<li>Buffer</li>
+<li>Boolean</li>
+<li>Mixed</li>
+<li>ObjectId</li>
+<li>Array</li>
+</ul>
+<p>点击查看更多的<a href="http://mongoosejs.com/docs/api.html#schematype_SchemaType" target="_blank" rel="noopener">SchemaType</a>。</p>
+<p>Schemas不仅定义了文档和其结构，还定义了model的<a href="http://mongoosejs.com/docs/guide.html#methods" target="_blank" rel="noopener">实例方法</a>、<a href="http://mongoosejs.com/docs/guide.html#statics" target="_blank" rel="noopener">静态方法</a>、<a href="http://mongoosejs.com/docs/guide.html#indexes" target="_blank" rel="noopener">复合索引</a>和属于文档<a href="http://mongoosejs.com/docs/middleware.html" target="_blank" rel="noopener">中间件</a>的生命周期钩子函数。</p>
+<h3 id="创建一个model"><a href="#创建一个model" class="headerlink" title="创建一个model"></a>创建一个model</h3><p>我们需要将我们定义的<code>blogSchema</code>转换成一个model才能工作。我们将<code>blogSchema</code>传给<code>mongoose.model(modelName, schema)</code>;</p>
+<pre><code>  var Blog = mongoose.model(&apos;Blog&apos;, blogSchema);
+// ready to go!
+</code></pre><h3 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h3><p>document是<code>model</code>的实例。document有许多内置的实例方法，我们也可以自定义document的实例方法。</p>
+<pre><code>// define a schema
+var animalSchema = new Schema({ name: String, type: String });
+
+// assign a function to the &quot;methods&quot; object of our animalSchema
+animalSchema.methods.findSimilarTypes = function(cb) {
+    return this.model(&apos;Animal&apos;).find({ type: this.type }, cb);
+};
+</code></pre><p>现在所有的<code>animal</code>实例都拥有<code>findSimilarTypes</code>方法。</p>
+<pre><code>var Animal = mongoose.model(&apos;Animal&apos;, animalSchema);
+var dog = new Animal({ type: &apos;dog&apos; });
+
+dog.findSimilarTypes(function(err, dogs) {
+    console.log(dogs); // woof
+});
+</code></pre><ul>
+<li>重写默认的mongoose document方法可能导致无法预知的结果，详情请点击<a href="http://mongoosejs.com/docs/api.html#schema_Schema.reserved" target="_blank" rel="noopener">查看</a>。</li>
+<li>不要使用箭头函数声明方法，因为箭头函数阻止绑定<code>this</code>，所以你的方法无法访问document，上例将无法正常工作。</li>
+</ul>
+<h3 id="静态方法"><a href="#静态方法" class="headerlink" title="静态方法"></a>静态方法</h3><p>在<code>model</code>上绑定静态方法也很简单，继续上面的<code>animalSchema</code>示例：</p>
+<pre><code>// assign a function to the &quot;statics&quot; object of our animalSchema
+animalSchema.statics.findByName = function(name, cb) {
+    return this.find({ name: new RegExp(name, &apos;i&apos;) }, cb);
+};
+
+var Animal = mongoose.model(&apos;Animal&apos;, animalSchema);
+Animal.findByName(&apos;fido&apos;, function(err, animals) {
+    console.log(animals);
+});
+</code></pre><p>要使用箭头函数声明方法，因为箭头函数阻止绑定<code>this</code>，在上例中使用箭头函数将无法正常工作。</p>
+<h3 id="查询助手"><a href="#查询助手" class="headerlink" title="查询助手"></a>查询助手</h3><p>你也可以像添加实例方法那样给mongoose的查询添加查询助手函数。查询助手方法可以帮你建立<a href="http://mongoosejs.com/docs/queries.html" target="_blank" rel="noopener">链式查询</a>模式。</p>
+<pre><code>animalSchema.query.byName = function(name) {
+    return this.find({ name: new RegExp(name, &apos;i&apos;) });
+};
+
+var Animal = mongoose.model(&apos;Animal&apos;, animalSchema);
+Animal.find().byName(&apos;fido&apos;).exec(function(err, animals) {
+    console.log(animals);
+});
+</code></pre><h3 id="索引"><a href="#索引" class="headerlink" title="索引"></a>索引</h3><p>MongoDB支持<a href="https://docs.mongodb.com/manual/indexes/" target="_blank" rel="noopener">secondary indexes</a> 。在mongoose中，我们可以在schema的path级别和schema级别上定义索引。复合索引只能在schema级别上定义。</p>
+<pre><code>var animalSchema = new Schema({
+name: String,
+type: String,
+tags: { type: [String], index: true } // field level
+});
+
+animalSchema.index({ name: 1, type: -1 }); // schema level
+</code></pre><p>当应用程序启动时，mongoose会自动创建你在schema中定义的索引。mongoose为每个index顺序执行<code>createIndex</code>，当所有的<code>createIndex</code>执行成功或者发生错误时会触发model上的index事件。虽然这个特性有利于开发，但是建议在生成环境中关闭它，因为创建索引会对性能造成很大的影响。可以通过设置<code>autoIndex</code>选择值为false在schema级别上或者全局关闭自动创建索引。</p>
+<pre><code>mongoose.connect(&apos;mongodb://user:pass@localhost:port/database&apos;, { autoIndex: false });
+// or
+mongoose.createConnection(&apos;mongodb://user:pass@localhost:port/database&apos;, { autoIndex: false });
+// or
+animalSchema.set(&apos;autoIndex&apos;, false);
+// or
+new Schema({..}, { autoIndex: false });
+</code></pre><p>当所有index创建成功或者发生错误时会触发model上的index事件。</p>
+<pre><code>// Will cause an error because mongodb has an _id index by default that
+// is not sparse
+animalSchema.index({ _id: 1 }, { sparse: true });
+var Animal = mongoose.model(&apos;Animal&apos;, animalSchema);
+
+Animal.on(&apos;index&apos;, function(error) {
+    // &quot;_id index cannot be sparse&quot;
+    console.log(error.message);
+});
+</code></pre><p>点击查看<a href="http://mongoosejs.com/docs/api.html#model_Model.ensureIndexes" target="_blank" rel="noopener">Model#ensureIndexes</a>方法。</p>
+<h3 id="虚拟属性"><a href="#虚拟属性" class="headerlink" title="虚拟属性"></a>虚拟属性</h3><p>document的虚拟属性可以被访问和设置，但是不会被存储到MongoDB中。getters用于格式化和组合字段，setter用于将一个值结构到数据库中的多个字段上。</p>
+<pre><code>// define a schema
+var personSchema = new Schema({
+    name: {
+    first: String,
+    last: String
+    }
+});
+
+// compile our model
+var Person = mongoose.model(&apos;Person&apos;, personSchema);
+
+// create a document
+var axl = new Person({
+    name: { first: &apos;Axl&apos;, last: &apos;Rose&apos; }
+});
+</code></pre><p>假设你想输出一个人的全名，你需要这样做：</p>
+<pre><code>console.log(axl.name.first + &apos; &apos; + axl.name.last); // Axl Rose
+</code></pre><p>每次都要连接first name和last name是很麻烦的事情。如果你想要对name做些其他的处理，例如移除符号该怎么办呢？你可以定义一个<code>fullname</code>的虚拟属性的getter，该值不会被保存到MongoDB中。</p>
+<pre><code>personSchema.virtual(&apos;fullName&apos;).get(function () {
+    return this.name.first + &apos; &apos; + this.name.last;
+});
+</code></pre><p>现在你可以调用getter函数获取<code>fullName</code>字段的值：</p>
+<pre><code>console.log(axl.fullName); // Axl Rose
+</code></pre><p>mongoose不会输出虚拟的字段，当你使用<code>toJSON()</code>或者<code>toObject()</code>函数时（或者对document使用<code>JSON.stringify()</code>），可以给<code>toJSON()</code>或者<a href="http://mongoosejs.com/docs/api.html#document_Document-toObject" target="_blank" rel="noopener">toObject()</a><code>传</code>{ virtuals: true }`获取虚拟字段。</p>
+<p>你可以自定义虚拟字段的setter函数，通过虚拟的<code>fullName</code>字段一次性设置first name和last name的值。</p>
+<pre><code>personSchema.virtual(&apos;fullName&apos;).
+get(function() { return this.name.first + &apos; &apos; + this.name.last; }).
+set(function(v) {
+    this.name.first = v.substr(0, v.indexOf(&apos; &apos;));
+    this.name.last = v.substr(v.indexOf(&apos; &apos;) + 1);
+});
+
+axl.fullName = &apos;William Rose&apos;; // Now `axl.name.first` is &quot;William&quot;
+</code></pre><p>虚拟字段的setters会在其他的validation之前运行。所以即使<code>first</code>和<code>last</code>字段值必须，上例依然会执行。</p>
+<p>只有非虚拟字段可以用于查询和选择的字段，因为虚拟字段不会被存到MongoDB中，所以不能用于查询。</p>
+<h4 id="别名"><a href="#别名" class="headerlink" title="别名"></a>别名</h4><p>别名属于特殊的虚拟字段，其getter和setter用于设置和获取另一个字段。为了节省带宽，你可以使用简短的字段名称用于存储到数据库，使用更长的语义化的别名提高代码可读性。</p>
+<pre><code>var personSchema = new Schema({
+n: {
+    type: String,
+    // Now accessing `name` will get you the value of `n`, and setting `n` will set the value of `name`
+    alias: &apos;name&apos;
+}
+});
+
+// Setting `name` will propagate to `n`
+var person = new Person({ name: &apos;Val&apos; });
+console.log(person); // { n: &apos;Val&apos; }
+console.log(person.toObject({ virtuals: true })); // { n: &apos;Val&apos;, name: &apos;Val&apos; }
+console.log(person.name); // &quot;Val&quot;
+
+person.name = &apos;Not Val&apos;;
+console.log(person); // { n: &apos;Not Val&apos; }
+</code></pre><h3 id="选项"><a href="#选项" class="headerlink" title="选项"></a>选项</h3><p>schemas有一些可配置的选项可直接传递给构造器或者<code>set</code>：</p>
+<pre><code>new Schema({..}, options);
+
+// or
+
+var schema = new Schema({..});
+schema.set(option, value);
+</code></pre><p>有效的选项：</p>
+<pre><code>* autoIndex
+* bufferCommands
+* capped
+* collection
+* id
+* _id
+* minimize
+* read
+* shardKey
+* strict
+* strictQuery
+* toJSON
+* toObject
+* typeKey
+* validateBeforeSave
+* versionKey
+* collation
+* skipVersioning
+* timeStamps
+</code></pre><h4 id="autoIndex"><a href="#autoIndex" class="headerlink" title="autoIndex"></a>autoIndex</h4><p>当应用程序启动时，mongoose会发出<code>createIndex</code>命令自动创建你在schema中定义的索引。mongoose v3版本索引默认在后台创建索引。如果你希望关闭自动创建选择手动创建索引时，设置<code>autoIndex</code>选择值为false，并调用model的<a href="http://mongoosejs.com/docs/api.html#model_Model.ensureIndexes" target="_blank" rel="noopener">ensureIndexes</a>方法。</p>
+<pre><code>var schema = new Schema({..}, { autoIndex: false });
+var Clock = mongoose.model(&apos;Clock&apos;, schema);
+Clock.ensureIndexes(callback);
+</code></pre><h4 id="bufferCommands"><a href="#bufferCommands" class="headerlink" title="bufferCommands"></a>bufferCommands</h4><p>如果connection断掉，mongoose会默认缓冲命令，直到驱动重连才会执行命令。设置<code>bufferCommands</code>值为false关闭缓冲。</p>
+<pre><code>var schema = new Schema({..}, { bufferCommands: false });
+</code></pre><p>设置schema的<code>bufferCommands</code>选项会重写全局的<code>bufferCommands</code>选项：</p>
+<pre><code>mongoose.set(&apos;bufferCommands&apos;, true);
+// Schema option below overrides the above, if the schema option is set.
+var schema = new Schema({..}, { bufferCommands: false });
+</code></pre><h4 id="capped"><a href="#capped" class="headerlink" title="capped"></a>capped</h4><p>Mongoose支持设置MongoDB集合大小的上限值。设置<code>capped</code>属性限制MongoDB集合的最大值，单位bytes。</p>
+<pre><code>new Schema({..}, { capped: 1024 });
+</code></pre><p>如果你想传其他的选项，例如max或者autoIndexId，可以将<code>capped</code>值设置为一个对象。这种情况下，<code>size</code>属性为必传值。</p>
+<pre><code>new Schema({..}, { capped: { size: 1024, max: 1000, autoIndexId: true } });
+</code></pre><h4 id="collection"><a href="#collection" class="headerlink" title="collection"></a>collection</h4><p>Mongoose默认使用utils.tocollectionname方法生成集合的集合名称。该方法会生成复数形式的名称。如果你需要自定义集合名称，可以传入下面的选项。</p>
+<pre><code>var dataSchema = new Schema({..}, { collection: &apos;data&apos; });
+</code></pre><h4 id="id"><a href="#id" class="headerlink" title="id"></a>id</h4><p>mongoose默认为每一个schema分配一个虚拟的<code>id</code> getter，该方法返回document的<code>_id</code>字段，类型为string或者ObjectId（哈希字符串）。如果你的schema不需要<code>id</code> getter，给schema的构造函数传option禁用该功能。</p>
+<pre><code>// default behavior
+var schema = new Schema({ name: String });
+var Page = mongoose.model(&apos;Page&apos;, schema);
+var p = new Page({ name: &apos;mongodb.org&apos; });
+console.log(p.id); // &apos;50341373e894ad16347efe01&apos;
+
+// disabled id
+var schema = new Schema({ name: String }, { id: false });
+var Page = mongoose.model(&apos;Page&apos;, schema);
+var p = new Page({ name: &apos;mongodb.org&apos; });
+console.log(p.id); // undefined
+</code></pre><h4 id="id-1"><a href="#id-1" class="headerlink" title="_id"></a>_id</h4><p>如果没有禁用，mongoose默认为每一个schema分配<code>_id</code>字段，值为ObjectId类型，与MongoDB默认行为一致。如果你的schema不需要<code>id</code> getter，给schema的构造函数传option禁用该功能。</p>
+<p>你只能在sub-document中使用此选项，因为如果没有<code>_id</code>，将document保存到数据库时会报错。</p>
+<pre><code>// default behavior
+var schema = new Schema({ name: String });
+var Page = mongoose.model(&apos;Page&apos;, schema);
+var p = new Page({ name: &apos;mongodb.org&apos; });
+console.log(p); // { _id: &apos;50341373e894ad16347efe01&apos;, name: &apos;mongodb.org&apos; }
+
+// disabled _id
+var childSchema = new Schema({ name: String }, { _id: false });
+var parentSchema = new Schema({ children: [childSchema] });
+
+var Model = mongoose.model(&apos;Model&apos;, parentSchema);
+
+Model.create({ children: [{ name: &apos;Luke&apos; }] }, function(error, doc) {
+// doc.children[0]._id will be undefined
+});
+</code></pre><h4 id="minimize"><a href="#minimize" class="headerlink" title="minimize"></a>minimize</h4><p>mongoose默认不存储空对象，实现schemas最小化。</p>
+<pre><code>var schema = new Schema({ name: String, inventory: {} });
+var Character = mongoose.model(&apos;Character&apos;, schema);
+
+// will store `inventory` field if it is not empty
+var frodo = new Character({ name: &apos;Frodo&apos;, inventory: { ringOfPower: 1 }});
+Character.findOne({ name: &apos;Frodo&apos; }, function(err, character) {
+console.log(character); // { name: &apos;Frodo&apos;, inventory: { ringOfPower: 1 }}
+});
+
+// will not store `inventory` field if it is empty
+var sam = new Character({ name: &apos;Sam&apos;, inventory: {}});
+Character.findOne({ name: &apos;Sam&apos; }, function(err, character) {
+console.log(character); // { name: &apos;Sam&apos; }
+});
+</code></pre><p>设置<code>minimize</code>选项重写默认行为，下例中会存储空对象：</p>
+<pre><code>var schema = new Schema({ name: String, inventory: {} }, { minimize: false });
+var Character = mongoose.model(&apos;Character&apos;, schema);
+
+// will store `inventory` if empty
+var sam = new Character({ name: &apos;Sam&apos;, inventory: {}});
+Character.findOne({ name: &apos;Sam&apos; }, function(err, character) {
+console.log(character); // { name: &apos;Sam&apos;, inventory: {}}
+});
+</code></pre><h4 id="read"><a href="#read" class="headerlink" title="read"></a>read</h4><p>mongoose允许在schema级别设置<a href="http://mongoosejs.com/docs/api.html#query_Query-read" target="_blank" rel="noopener">查询＃读取</a>选项，为我们提供一种将默认ReadPreferences应用于从模型派生的所有查询的方法。</p>
+<pre><code>var schema = new Schema({..}, { read: &apos;primary&apos; });            // also aliased as &apos;p&apos;
+var schema = new Schema({..}, { read: &apos;primaryPreferred&apos; });   // aliased as &apos;pp&apos;
+var schema = new Schema({..}, { read: &apos;secondary&apos; });          // aliased as &apos;s&apos;
+var schema = new Schema({..}, { read: &apos;secondaryPreferred&apos; }); // aliased as &apos;sp&apos;
+var schema = new Schema({..}, { read: &apos;nearest&apos; });            // aliased as &apos;n&apos;
+</code></pre><p>每个pref允许使用简单的别名，不必须使用全拼，例如’secondaryPreferred’，防止拼写错误。</p>
+<p>读选项允许我们设置tag，指明驱动应该试图读取的replicaSet。更多<a href="https://docs.mongodb.com/manual/applications/replication/#tag-sets" target="_blank" rel="noopener">tag设置</a>详情点击查看。</p>
+<blockquote>
+<p>注意：你可以在连接数据库时，指明驱动的读选项的pref <a href="http://mongodb.github.io/node-mongodb-native/api-generated/replset.html?highlight=strategy" target="_blank" rel="noopener">strategy</a>。</p>
+</blockquote>
+<pre><code>// pings the replset members periodically to track network latency
+var options = { replset: { strategy: &apos;ping&apos; }};
+mongoose.connect(uri, options);
+
+var schema = new Schema({..}, { read: [&apos;nearest&apos;, { disk: &apos;ssd&apos; }] });
+mongoose.model(&apos;JellyBean&apos;, schema);
+</code></pre><h4 id="shardKey"><a href="#shardKey" class="headerlink" title="shardKey"></a>shardKey</h4><p>当我们有一个分片的MongoDB架构时，需要使用hardKey（片键）选项。每个分片集合都有一个分片键，它必须存在于所有插入/更新操作中。我们只需要在schema属性中配置shardKey。</p>
+<pre><code>new Schema({ .. }, { shardKey: { tag: 1, name: 1 }})
+</code></pre><blockquote>
+<p>请注意，Mongoose不会为你发送<code>shardcollection</code>命令。 你必须自己配置你的碎片。</p>
+</blockquote>
+<h4 id="strict"><a href="#strict" class="headerlink" title="strict"></a>strict</h4><p>mongoose默认开启strict模式，确保传递给model却没有在schema中声明的字段，不会被保存到数据库中。</p>
+<pre><code>var thingSchema = new Schema({..})
+var Thing = mongoose.model(&apos;Thing&apos;, thingSchema);
+var thing = new Thing({ iAmNotInTheSchema: true });
+thing.save(); // iAmNotInTheSchema is not saved to the db
+
+// set to false..
+var thingSchema = new Schema({..}, { strict: false });
+var thing = new Thing({ iAmNotInTheSchema: true });
+thing.save(); // iAmNotInTheSchema is now saved to the db!!
+</code></pre><p>该选项也影响<code>doc.set()</code>执行的结果。</p>
+<pre><code>var thingSchema = new Schema({..})
+var Thing = mongoose.model(&apos;Thing&apos;, thingSchema);
+var thing = new Thing;
+thing.set(&apos;iAmNotInTheSchema&apos;, true);
+thing.save(); // iAmNotInTheSchema is not saved to the db
+</code></pre><p>通过给model的实例传递第二个参数重写该选项。</p>
+<pre><code>var Thing = mongoose.model(&apos;Thing&apos;);
+var thing = new Thing(doc, true);  // enables strict mode
+var thing = new Thing(doc, false); // disables strict mode
+</code></pre><p><code>strict</code>值也可以被设置为<code>throw</code>，如果保存坏数据到数据库会报错而不是忽略该数据。</p>
+<blockquote>
+<p>请注意，不设置schema的option时，model实例设置任何的未在schema中声明的key/val键值对都会被忽视。</p>
+</blockquote>
+<pre><code>var thingSchema = new Schema({..})
+var Thing = mongoose.model(&apos;Thing&apos;, thingSchema);
+var thing = new Thing;
+thing.iAmNotInTheSchema = true;
+thing.save(); // iAmNotInTheSchema is never saved to the db
+</code></pre><h4 id="strictQuery"><a href="#strictQuery" class="headerlink" title="strictQuery"></a>strictQuery</h4><p>为了向后兼容，<code>strict</code>选项在查询时不会用于过滤字段。</p>
+<pre><code>const mySchema = new Schema({ field: Number }, { strict: true });
+const MyModel = mongoose.model(&apos;Test&apos;, mySchema);
+
+// Mongoose will **not** filter out `notInSchema: 1`, despite `strict: true`
+MyModel.find({ notInSchema: 1 });
+</code></pre><p><code>strict</code>选项也会用于更新数据。</p>
+<pre><code>// Mongoose will strip out `notInSchema` from the update if `strict` is
+// not `false`
+MyModel.updateMany({}, { $set: { notInSchema: 1 } });
+</code></pre><p>mongoose提供了一个独立的选项<code>strictQuery</code>用于查询时过滤字段。</p>
+<pre><code>const mySchema = new Schema({ field: Number }, {
+    strict: true,
+    strictQuery: true // Turn on strict mode for query filters
+});
+const MyModel = mongoose.model(&apos;Test&apos;, mySchema);
+
+// Mongoose will strip out `notInSchema: 1` because `strictQuery` is `true`
+MyModel.find({ notInSchema: 1 });
+</code></pre><h4 id="toJSON"><a href="#toJSON" class="headerlink" title="toJSON"></a>toJSON</h4><p>与<a href="http://mongoosejs.com/docs/guide.html#toObject" target="_blank" rel="noopener">toObject</a>选项相同，但是<code>toJSON</code>方法只能被documents调用</p>
+<pre><code>var schema = new Schema({ name: String });
+schema.path(&apos;name&apos;).get(function (v) {
+return v + &apos; is my name&apos;;
+});
+schema.set(&apos;toJSON&apos;, { getters: true, virtuals: false });
+var M = mongoose.model(&apos;Person&apos;, schema);
+var m = new M({ name: &apos;Max Headroom&apos; });
+console.log(m.toObject()); // { _id: 504e0cd7dd992d9be2f20b6f, name: &apos;Max Headroom&apos; }
+console.log(m.toJSON()); // { _id: 504e0cd7dd992d9be2f20b6f, name: &apos;Max Headroom is my name&apos; }
+// since we know toJSON is called whenever a js object is stringified:
+console.log(JSON.stringify(m)); // { &quot;_id&quot;: &quot;504e0cd7dd992d9be2f20b6f&quot;, &quot;name&quot;: &quot;Max Headroom is my name&quot; }
+</code></pre><p><a href="http://mongoosejs.com/docs/api.html#document_Document-toObject" target="_blank" rel="noopener">点击查看</a>所有可用的<code>toJSON/toObject</code>选项。</p>
+<h4 id="toObject"><a href="#toObject" class="headerlink" title="toObject"></a>toObject</h4><p>document可以调用<a href="http://mongoosejs.com/docs/guide.html#toObject" target="_blank" rel="noopener">toObject</a>方法将mongoose document转换为普通的JavaScript对象。该方法接受一些参数，我们可以声明这些选项并默认应用于所有的schema documents，而不是在每个文档的基础上应用这些选项。</p>
+<p>想要在<code>console.log</code>中输出所有的虚拟字段，在<code>toObject</code>选项中设置<code>{ getters: true }</code>：</p>
+<pre><code>var schema = new Schema({ name: String });
+schema.path(&apos;name&apos;).get(function (v) {
+return v + &apos; is my name&apos;;
+});
+schema.set(&apos;toObject&apos;, { getters: true });
+var M = mongoose.model(&apos;Person&apos;, schema);
+var m = new M({ name: &apos;Max Headroom&apos; });
+console.log(m); // { _id: 504e0cd7dd992d9be2f20b6f, name: &apos;Max Headroom is my name&apos; }
+</code></pre><p>点击查看<a href="http://mongoosejs.com/docs/api.html#document_Document-toObject" target="_blank" rel="noopener">这里</a>所有可用的<code>toObject</code>选项。</p>
+<h4 id="typeKey"><a href="#typeKey" class="headerlink" title="typeKey"></a>typeKey</h4><p>如果schema中的object定义了’type’字段，mongoose默认把它理解为字段类型声明。</p>
+<pre><code>// Mongoose interprets this as &apos;loc is a String&apos;
+var schema = new Schema({ loc: { type: String, coordinates: [Number] } });
+</code></pre><p>然而有些应用中例如<a href="https://docs.mongodb.com/manual/reference/geojson/" target="_blank" rel="noopener">geoJSON</a>，’type’属性是非常重要的，你可以设置’typeKey’选项来控制哪个字段用于声明字段类型。</p>
+<pre><code>var schema = new Schema({
+// Mongoose interpets this as &apos;loc is an object with 2 keys, type and coordinates&apos;
+loc: { type: String, coordinates: [Number] },
+// Mongoose interprets this as &apos;name is a String&apos;
+name: { $type: String }
+}, { typeKey: &apos;$type&apos; }); // A &apos;$type&apos; key means this object is a type declaration
+</code></pre><h4 id="validateBeforeSave"><a href="#validateBeforeSave" class="headerlink" title="validateBeforeSave"></a>validateBeforeSave</h4><p>在document保存到数据库前会自动执行验证器，对于验证失败的文档会阻止保存。如果你想手动控制验证并且让验证失败的document也可以保存到数据库，可以设置<code>validateBeforeSave</code>值为false。</p>
+<pre><code>var schema = new Schema({ name: String });
+schema.set(&apos;validateBeforeSave&apos;, false);
+schema.path(&apos;name&apos;).validate(function (value) {
+    return v != null;
+});
+var M = mongoose.model(&apos;Person&apos;, schema);
+var m = new M({ name: null });
+m.validate(function(err) {
+    console.log(err); // Will tell you that null is not allowed.
+});
+m.save(); // Succeeds despite being invalid
+</code></pre><h4 id="versionKey"><a href="#versionKey" class="headerlink" title="versionKey"></a>versionKey</h4><p>mongoose默认在第一次创建文档时为每个document设置<code>versionKey</code>。此值包含了document的内部修订版本号。<code>versionkey</code>选项是一个字符串，用于表示版本控制的路径，默认值为<code>_v</code>。如果与你的应用有冲突，你可以如下例中修改：</p>
+<pre><code>var schema = new Schema({ name: &apos;string&apos; });
+var Thing = mongoose.model(&apos;Thing&apos;, schema);
+var thing = new Thing({ name: &apos;mongoose v3&apos; });
+thing.save(); // { __v: 0, name: &apos;mongoose v3&apos; }
+
+// customized versionKey
+new Schema({..}, { versionKey: &apos;_somethingElse&apos; })
+var Thing = mongoose.model(&apos;Thing&apos;, schema);
+var thing = new Thing({ name: &apos;mongoose v3&apos; });
+thing.save(); // { _somethingElse: 0, name: &apos;mongoose v3&apos; }
+</code></pre><p>可以设置<code>versionKey</code>值为false，禁用document的版本号。不要禁用版本号除非<a href="http://aaronheckmann.tumblr.com/post/48943525537/mongoose-v3-part-1-versioning" target="_blank" rel="noopener">你知道你正在做什么</a>。</p>
+<h4 id="collation"><a href="#collation" class="headerlink" title="collation"></a>collation</h4><p>为每个查询和聚合设置默认的<a href="https://docs.mongodb.com/manual/reference/collation/" target="_blank" rel="noopener">collation</a>。 这是一个初学者友好的<a href="https://docs.mongodb.com/manual/reference/collation/" target="_blank" rel="noopener">collation</a><a href="http://thecodebarbarian.com/a-nodejs-perspective-on-mongodb-34-collations" target="_blank" rel="noopener">collation总览</a>。</p>
+<h4 id="skipVersioning"><a href="#skipVersioning" class="headerlink" title="skipVersioning"></a>skipVersioning</h4><p><code>skipversioning</code>允许阻止版本号更新（例如，内部版本号不会增加即使这些路径更新）。不要这样做，除非你知道你在做什么。对于子文档，使用完全限定的路径将版本号包含在父文档中。</p>
+<pre><code>new Schema({..}, { skipVersioning: { dontVersionMe: true } });
+thing.dontVersionMe.push(&apos;hey&apos;);
+thing.save(); // version is not incremented
+</code></pre><h4 id="timestamps"><a href="#timestamps" class="headerlink" title="timestamps"></a>timestamps</h4><p>如果设置了<code>timestamps</code>，mongoose会为你的schema分配<code>createAt</code>和<code>updateAt</code>字段，值为<code>Date</code>类型。</p>
+<p>默认情况下，两个字段的名称为<code>createAt</code>和<code>updateAt</code>，设置<code>timestamps.createdAt</code>和<code>timestamps.updatedAt</code>自定义字段名称。</p>
+<pre><code>var thingSchema = new Schema({..}, { timestamps: { createdAt: &apos;created_at&apos; } });
+var Thing = mongoose.model(&apos;Thing&apos;, thingSchema);
+var thing = new Thing();
+thing.save(); // `created_at` &amp; `updatedAt` will be included
+</code></pre><h4 id="useNestedStrict"><a href="#useNestedStrict" class="headerlink" title="useNestedStrict"></a>useNestedStrict</h4><p>mongoose v4版本执行<code>update()</code>和<code>findOneAndUpdate()</code>操作时只会检查顶级schema的严格模式设置。</p>
+<pre><code>var childSchema = new Schema({}, { strict: false });
+var parentSchema = new Schema({ child: childSchema }, { strict: &apos;throw&apos; });
+var Parent = mongoose.model(&apos;Parent&apos;, parentSchema);
+Parent.update({}, { &apos;child.name&apos;: &apos;Luke Skywalker&apos; }, function(error) {
+// Error because parentSchema has `strict: throw`, even though
+// `childSchema` has `strict: false`
+});
+
+var update = { &apos;child.name&apos;: &apos;Luke Skywalker&apos; };
+var opts = { strict: false };
+Parent.update({}, update, opts, function(error) {
+// This works because passing `strict: false` to `update()` overwrites
+// the parent schema.
+});
+</code></pre><p>如果你设置了<code>useNestedStrict</code>值为true，mongoose在执行updates时会使用child schema的<code>strict</code>选项的值。</p>
+<pre><code>var childSchema = new Schema({}, { strict: false });
+var parentSchema = new Schema({ child: childSchema },
+{ strict: &apos;throw&apos;, useNestedStrict: false });
+var Parent = mongoose.model(&apos;Parent&apos;, parentSchema);
+Parent.update({}, { &apos;child.name&apos;: &apos;Luke Skywalker&apos; }, function(error) {
+// Works!
+});
+</code></pre><h4 id="Pluggable"><a href="#Pluggable" class="headerlink" title="Pluggable"></a>Pluggable</h4><p>schema允许使用<a href="http://mongoosejs.com/docs/plugins.html" target="_blank" rel="noopener">插件</a>，这样我们将有用的功能打包成插件，在社区或者项目中实现共享。</p>
+<h2 id="下一章-——-SchemaTypes"><a href="#下一章-——-SchemaTypes" class="headerlink" title="下一章 —— SchemaTypes"></a>下一章 —— <a href="https://github.com/dreamFlyingCat/mongoose-API/blob/master/docs/Schemas/SchemaTypes.md" target="_blank" rel="noopener">SchemaTypes</a></h2>
+        </div>
+
+        <blockquote class="post-copyright">
+    
+    <div class="content">
+        
+<span class="post-time">
+    post.last_updated<time datetime="2018-04-09T04:15:54.813Z" itemprop="dateUpdated">2018-04-09 12:15:54</time>
+</span><br>
+
+
+        
+        欢迎留言~~~
+        
+    </div>
+    
+    <footer>
+        <a href="https://dreamflyingcat.github.io">
+            <img src="/img/avatar.jpg" alt="MissLiu">
+            MissLiu
+        </a>
+    </footer>
+</blockquote>
+
+        
+<div class="page-reward">
+    <a id="rewardBtn" href="javascript:;" class="page-reward-btn waves-effect waves-circle waves-light">赏</a>
+</div>
+
+
+
+        <div class="post-footer">
+            
+
+            
+<div class="page-share-wrap">
+    
+
+<div class="page-share" id="pageShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&title=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&title=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+
+    <a href="javascript:;" id="shareFab" class="page-share-fab waves-effect waves-circle">
+        <i class="icon icon-share-alt icon-lg"></i>
+    </a>
+</div>
+
+
+
+        </div>
+    </div>
+
+    
+<nav class="post-nav flex-row flex-justify-between">
+  
+    <div class="waves-block waves-effect prev">
+      <a href="/2018/04/09/mongoose-Connections/" id="post-prev" class="post-nav-link">
+        <div class="tips"><i class="icon icon-angle-left icon-lg icon-pr"></i> Prev</div>
+        <h4 class="title">mongoose v5.0.12 中文API - Connections</h4>
+      </a>
+    </div>
+  
+
+  
+    <div class="waves-block waves-effect next">
+      <a href="/2018/04/09/中文转拼音模块/" id="post-next" class="post-nav-link">
+        <div class="tips">Next <i class="icon icon-angle-right icon-lg icon-pl"></i></div>
+        <h4 class="title">中文转拼音或首字母模块</h4>
+      </a>
+    </div>
+  
+</nav>
+
+
+
+    
+
+
+<section class="comments" id="comments">
+    <div id="disqus_thread"></div>
+    <script>
+    var disqus_shortname = 'true';
+    lazyScripts.push('//' + disqus_shortname + '.disqus.com/embed.js')
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <section class="comments" id="comments">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            var hyper_id = 'true';
+            _hcwp = window._hcwp || [];
+            _hcwp.push({
+                widget: "Stream",
+                widget_id: hyper_id
+            });
+            (function () {
+                if ("HC_LOAD_INIT" in window) return;
+                HC_LOAD_INIT = true;
+                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(
+                    0, 2).toLowerCase();
+                var hcc = document.createElement("script");
+                hcc.type = "text/javascript";
+                hcc.async = true;
+                hcc.src = ("https:" == document.location.protocol ? "https" : "http") +
+                    "://w.hypercomments.com/widget/hc/" + hyper_id + "/" + lang + "/widget.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+
+        </script>
+        <a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+    </section>
+
+
+
+
+</article>
+
+<div id="reward" class="page-modal reward-lay">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <h3 class="reward-title">
+        <i class="icon icon-quote-left"></i>
+        谢谢大爷~
+        <i class="icon icon-quote-right"></i>
+    </h3>
+    <div class="reward-content">
+        
+        <div class="reward-code">
+            <img id="rewardCode" src="/img/wechat.jpg" alt="打赏二维码">
+        </div>
+        
+        <label class="reward-toggle">
+            <input id="rewardToggle" type="checkbox" class="reward-toggle-check"
+                data-wechat="/img/wechat.jpg" data-alipay="/img/alipay.jpg">
+            <div class="reward-toggle-ctrol">
+                <span class="reward-toggle-item wechat">微信</span>
+                <span class="reward-toggle-label"></span>
+                <span class="reward-toggle-item alipay">支付宝</span>
+            </div>
+        </label>
+        
+    </div>
+</div>
+
+
+
+</div>
+
+        <footer class="footer">
+    <div class="top">
+        
+<p>
+    <span id="busuanzi_container_site_uv" style='display:none'>
+        站点总访客数：<span id="busuanzi_value_site_uv"></span>
+    </span>
+    <span id="busuanzi_container_site_pv" style='display:none'>
+        站点总访问量：<span id="busuanzi_value_site_pv"></span>
+    </span>
+</p>
+
+
+        <p>
+            
+                <span><a href="/atom.xml" target="_blank" class="rss" title="rss"><i class="icon icon-lg icon-rss"></i></a></span>
+            
+            <span>footer.license</span>
+        </p>
+    </div>
+    <div class="bottom">
+        <p><span>MissLiu &copy; 2018</span>
+            <span>
+                
+                Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
+            </span>
+        </p>
+    </div>
+</footer>
+
+    </main>
+    <div class="mask" id="mask"></div>
+<a href="javascript:;" id="gotop" class="waves-effect waves-circle waves-light"><span class="icon icon-lg icon-chevron-up"></span></a>
+
+
+
+<div class="global-share" id="globalShare">
+    <ul class="reset share-icons">
+      <li>
+        <a class="weibo share-sns" target="_blank" href="http://service.weibo.com/share/share.php?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&title=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&pic=https://dreamflyingcat.github.io/img/avatar.jpg" data-title="微博">
+          <i class="icon icon-weibo"></i>
+        </a>
+      </li>
+      <li>
+        <a class="weixin share-sns wxFab" href="javascript:;" data-title="微信">
+          <i class="icon icon-weixin"></i>
+        </a>
+      </li>
+      <li>
+        <a class="qq share-sns" target="_blank" href="http://connect.qq.com/widget/shareqq/index.html?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&title=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&source=your description" data-title=" QQ">
+          <i class="icon icon-qq"></i>
+        </a>
+      </li>
+      <li>
+        <a class="facebook share-sns" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/" data-title=" Facebook">
+          <i class="icon icon-facebook"></i>
+        </a>
+      </li>
+      <li>
+        <a class="twitter share-sns" target="_blank" href="https://twitter.com/intent/tweet?text=《mongoose v5.0.12 中文API - 纲要》 — dreamFlyingCat&url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/&via=https://dreamflyingcat.github.io" data-title=" Twitter">
+          <i class="icon icon-twitter"></i>
+        </a>
+      </li>
+      <li>
+        <a class="google share-sns" target="_blank" href="https://plus.google.com/share?url=https://dreamflyingcat.github.io/2018/04/09/mongoose-Schema/" data-title=" Google+">
+          <i class="icon icon-google-plus"></i>
+        </a>
+      </li>
+    </ul>
+ </div>
+
+
+<div class="page-modal wx-share" id="wxShare">
+    <a class="close" href="javascript:;"><i class="icon icon-close"></i></a>
+    <p>扫一扫，分享到微信</p>
+    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAMYAAADGCAAAAACs8KCBAAACMElEQVR42u3a0W7CMAwF0P3/TzNpT5MmunvjMo3k5AlBoTlFshzbHx/xenyt63e+v/99Xf/Cz2ue/fINCwMD420Zj8t1vemckXz6817J3jAwMM5h5D/X3iDBPHtkyd4wMDAw8oCbb7cNuBgYGBhrKVp+lG2TSAwMDIzJITbfdBJYr7/7wrM4BgbGGzLaxsBfvn5hfwMDA+NNGI9yraWJ7YG23hUGBsbWjMkgxVoKmLxO3rltHgQDA+PfM+btxrWBsHzTUbKIgYFxACMvYK2liW2xrC3PYWBgnMBINtSma5MDaps+YmBg7M1YSxknW1m7skgTMTAwNmXMi2uTFsL8uxgYGHsz8oRv0nqcDLBG6SkGBsYBjCQVK4Yerktj5aE0OspiYGAcw2gPsW0gbtNQDAwMjOv2wL3hclIFXCy3YWBgbMTIbzBP5tZGV6PHh4GBcQzjrnRtLRCPqBgYGAcw2nGr/Mb5YEdS5nu6BwwMjK0ZbYrWtg3mJbY8ccTAwNiVkQS7YuhhMLRxw/+AgYGxNSMfqsiL9Xk7sx0yKw6xGBgYWzAmKVrSepy0AfIjNAYGxt6MR7nuPYJOCm2/dGIxMDA2YrTl++TTtWNt28LEwMA4jTEp7reDYm1TM398GBgYJzDaMJpfX0f3pbCOgYGBMSn9t0E5bxJEcR0DA+NgRl7ib8cpkuTytoCLgYHxVox89CG/zVqDs31wGBgYJzDuagysNT7Xynwv7G9gYGD8L8YnUXJ/rZCBXPsAAAAASUVORK5CYII=" alt="微信分享二维码">
+</div>
+
+
+
+
+    <script src="//cdn.bootcss.com/node-waves/0.7.4/waves.min.js"></script>
+<script>
+var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
+
+
+</script>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/main.min.js"></script>
+
+
+<div class="search-panel" id="search-panel">
+    <ul class="search-result" id="search-result"></ul>
+</div>
+<template id="search-tpl">
+<li class="item">
+    <a href="{path}" class="waves-block waves-effect">
+        <div class="title ellipsis" title="{title}">{title}</div>
+        <div class="flex-row flex-middle">
+            <div class="tags ellipsis">
+                {tags}
+            </div>
+            <time class="flex-col time">{date}</time>
+        </div>
+    </a>
+</li>
+</template>
+
+<script src="//unpkg.com/hexo-theme-material-indigo@latest/js/search.min.js" async></script>
+
+
+
+
+
+
+<script async src="//dn-lbstatics.qbox.me/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+
+
+
+<script>
+(function() {
+    var OriginTitile = document.title, titleTime;
+    document.addEventListener('visibilitychange', function() {
+        if (document.hidden) {
+            document.title = '天道酬勤';
+            clearTimeout(titleTime);
+        } else {
+            document.title = '(つェ⊂)咦!又好了!';
+            titleTime = setTimeout(function() {
+                document.title = OriginTitile;
+            },2000);
+        }
+    });
+})();
+</script>
+
+
+
+</body>
+</html>
