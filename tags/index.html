@@ -154,6 +154,12 @@
 
 
 
+<section class="comments" id="comments">
+    <!-- UY BEGIN -->
+    <div id="uyan_frame"></div>
+    <script src="http://v2.uyan.cc/code/uyan.js?uid=true"></script>
+    <!-- UY END -->
+</section>
 
 
 
@@ -162,6 +168,34 @@
 
 
 
+
+
+    <section class="comments" id="comments">
+        <div id="hypercomments_widget"></div>
+        <script type="text/javascript">
+            var hyper_id = 'true';
+            _hcwp = window._hcwp || [];
+            _hcwp.push({
+                widget: "Stream",
+                widget_id: hyper_id
+            });
+            (function () {
+                if ("HC_LOAD_INIT" in window) return;
+                HC_LOAD_INIT = true;
+                var lang = (navigator.language || navigator.systemLanguage || navigator.userLanguage || "en").substr(
+                    0, 2).toLowerCase();
+                var hcc = document.createElement("script");
+                hcc.type = "text/javascript";
+                hcc.async = true;
+                hcc.src = ("https:" == document.location.protocol ? "https" : "http") +
+                    "://w.hypercomments.com/widget/hc/" + hyper_id + "/" + lang + "/widget.js";
+                var s = document.getElementsByTagName("script")[0];
+                s.parentNode.insertBefore(hcc, s.nextSibling);
+            })();
+
+        </script>
+        <a href="http://hypercomments.com" rel="nofollow" class="hc-link" title="comments widget">comments powered by HyperComments</a>
+    </section>
 
 
 
@@ -218,7 +252,7 @@
         </p>
     </div>
     <div class="bottom">
-        <p><span>MissLiu &copy; 2015 - 2018</span>
+        <p><span>MissLiu &copy; 2018</span>
             <span>
                 
                 Power by <a href="http://hexo.io/" target="_blank">Hexo</a> Theme <a href="https://github.com/yscoder/hexo-theme-indigo" target="_blank">indigo</a>
@@ -321,7 +355,7 @@ var BLOG = { ROOT: '/', SHARE: true, REWARD: true };
     var OriginTitile = document.title, titleTime;
     document.addEventListener('visibilitychange', function() {
         if (document.hidden) {
-            document.title = 'Miss_liu的博客';
+            document.title = '天道酬勤';
             clearTimeout(titleTime);
         } else {
             document.title = '(つェ⊂)咦!又好了!';
